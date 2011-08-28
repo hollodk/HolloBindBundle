@@ -15,6 +15,12 @@ class AdminZoneController extends Controller
    */
   public function indexAction()
   {
+    $em = $this->getDoctrine()->getEntityManager();
+    $domains = $em->getRepository('HolloBindBundle:Domain')->findAll();
+
+    return array(
+      'domains' => $domains
+    );
   }
 
   /**
@@ -23,6 +29,7 @@ class AdminZoneController extends Controller
    */
   public function newAction()
   {
+    return array();
   }
 
   /**
