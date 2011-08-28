@@ -1,4 +1,4 @@
-admin_zones:
-  pattern:  /zone
-  defaults: { _controller: HolloBindBundle:AdminZone:index }
+_admin_zone:
+  resource: "@HolloBindBundle/Controller/AdminZoneController.php"
+  type:     annotation
   prefix:   /admin
