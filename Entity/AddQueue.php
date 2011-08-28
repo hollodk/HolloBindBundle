@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Hollo\BindBundle\Entity\AddQueueRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class AddQueue
 {
@@ -219,5 +220,13 @@ class AddQueue
     public function getCompleted()
     {
         return $this->completed;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function prePersist()
+    {
+      $this->setCompleted(false);
     }
 }

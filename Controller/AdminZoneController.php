@@ -29,7 +29,26 @@ class AdminZoneController extends Controller
    */
   public function newAction()
   {
-    return array();
+    $queue = new \Hollo\BindBundle\Entity\AddQueue();
+    $form = $this->createForm(new \Hollo\BindBundle\Form\Zone(), $queue);
+
+    if ($this->getRequest()->getMethod() == 'POST') {
+      $form->bindRequest($this->getRequest());
+
+      if ($form->isValid()) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->persist($queue);
+        $em->flush();
+
+        $this->get('session')->setFlash('notice','Your data has been saved.');
+
+        return $this->redirect($this->generateUrl('hollo_bind_adminzone_index'));
+      }
+    }
+
+    return array(
+      'form' => $form->createView()
+    );
   }
 
   /**
