@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Hollo\BindBundle\Entity\DelQueue
  *
- * @ORM\Table()
+ * @ORM\Table(name="dns_del_queue")
  * @ORM\Entity(repositoryClass="Hollo\BindBundle\Entity\DelQueueRepository")
  */
 class DelQueue
@@ -39,7 +39,7 @@ class DelQueue
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -59,7 +59,7 @@ class DelQueue
     /**
      * Get domain_id
      *
-     * @return integer 
+     * @return integer
      */
     public function getDomainId()
     {
@@ -79,7 +79,7 @@ class DelQueue
     /**
      * Get completed
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getCompleted()
     {

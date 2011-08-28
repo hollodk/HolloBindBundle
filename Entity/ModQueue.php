@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Hollo\BindBundle\Entity\ModQueue
  *
- * @ORM\Table()
+ * @ORM\Table(name="dns_mod_queue")
  * @ORM\Entity(repositoryClass="Hollo\BindBundle\Entity\ModQueueRepository")
  */
 class ModQueue
@@ -46,7 +46,7 @@ class ModQueue
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -66,7 +66,7 @@ class ModQueue
     /**
      * Get domain_id
      *
-     * @return integer 
+     * @return integer
      */
     public function getDomainId()
     {
@@ -86,7 +86,7 @@ class ModQueue
     /**
      * Get created_at
      *
-     * @return datetime 
+     * @return datetime
      */
     public function getCreatedAt()
     {
@@ -106,7 +106,7 @@ class ModQueue
     /**
      * Get completed
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getCompleted()
     {

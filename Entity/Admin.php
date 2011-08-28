@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Hollo\BindBundle\Entity\Admin
  *
- * @ORM\Table()
+ * @ORM\Table(name="dns_admin")
  * @ORM\Entity(repositoryClass="Hollo\BindBundle\Entity\AdminRepository")
  */
 class Admin
@@ -39,7 +39,7 @@ class Admin
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -59,7 +59,7 @@ class Admin
     /**
      * Get username
      *
-     * @return string 
+     * @return string
      */
     public function getUsername()
     {
@@ -79,7 +79,7 @@ class Admin
     /**
      * Get password
      *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {

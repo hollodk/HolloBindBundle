@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Hollo\BindBundle\Entity\Domain
  *
- * @ORM\Table()
+ * @ORM\Table(name="dns_domain")
  * @ORM\Entity(repositoryClass="Hollo\BindBundle\Entity\DomainRepository")
  */
 class Domain
@@ -67,7 +67,7 @@ class Domain
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -87,7 +87,7 @@ class Domain
     /**
      * Get domain
      *
-     * @return string 
+     * @return string
      */
     public function getDomain()
     {
@@ -107,7 +107,7 @@ class Domain
     /**
      * Get address
      *
-     * @return string 
+     * @return string
      */
     public function getAddress()
     {
@@ -127,7 +127,7 @@ class Domain
     /**
      * Get password
      *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {
@@ -147,7 +147,7 @@ class Domain
     /**
      * Get ns1
      *
-     * @return string 
+     * @return string
      */
     public function getNs1()
     {
@@ -167,7 +167,7 @@ class Domain
     /**
      * Get ns2
      *
-     * @return string 
+     * @return string
      */
     public function getNs2()
     {
@@ -187,7 +187,7 @@ class Domain
     /**
      * Get description
      *
-     * @return text 
+     * @return text
      */
     public function getDescription()
     {

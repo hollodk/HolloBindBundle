@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Hollo\BindBundle\Entity\AddQueue
  *
- * @ORM\Table()
+ * @ORM\Table(name="dns_add_queue")
  * @ORM\Entity(repositoryClass="Hollo\BindBundle\Entity\AddQueueRepository")
  * @ORM\HasLifecycleCallbacks()
  */

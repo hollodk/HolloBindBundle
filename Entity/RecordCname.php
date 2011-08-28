@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Hollo\BindBundle\Entity\RecordCname
  *
- * @ORM\Table()
+ * @ORM\Table(name="dns_record_cname")
  * @ORM\Entity(repositoryClass="Hollo\BindBundle\Entity\RecordCnameRepository")
  */
 class RecordCname
@@ -46,7 +46,7 @@ class RecordCname
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -66,7 +66,7 @@ class RecordCname
     /**
      * Get domain_id
      *
-     * @return integer 
+     * @return integer
      */
     public function getDomainId()
     {
@@ -86,7 +86,7 @@ class RecordCname
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -106,7 +106,7 @@ class RecordCname
     /**
      * Get address
      *
-     * @return string 
+     * @return string
      */
     public function getAddress()
     {
