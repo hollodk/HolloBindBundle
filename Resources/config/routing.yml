@@ -2,3 +2,11 @@ _admin_zone:
   resource: "@HolloBindBundle/Controller/AdminZoneController.php"
   type:     annotation
   prefix:   /admin
+
+_zone:
+  resource: "@HolloBindBundle/Controller/ZoneController.php"
+  type:     annotation
+
+_record:
+  resource: "@HolloBindBundle/Controller/RecordController.php"
+  type:     annotation
