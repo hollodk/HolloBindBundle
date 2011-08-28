@@ -1,3 +1,4 @@
-HolloBindBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: HolloBindBundle:Default:index }
+admin_zones:
+  pattern:  /zone
+  defaults: { _controller: HolloBindBundle:AdminZone:index }
+  prefix:   /admin
