@@ -19,5 +19,10 @@ class QueueProcessCommand extends ContainerAwareCommand
 
   protected function execute(InputInterface $input, OutputInterface $output)
   {
+    // create lock
+    // processmodqueue
+    // processaddqueue
+    // processdelqueue
+    // remove lock
   }
 }

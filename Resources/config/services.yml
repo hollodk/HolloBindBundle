@@ -1,7 +1,15 @@
 parameters:
-  hollo_bind.dns.class: Hollo\BindBundle\Helper\DNS
+  hollo_bind.bind.class: Hollo\BindBundle\Helper\Bind
+  hollo_bind.lock.class: Hollo\BindBundle\Helper\Lock
+  hollo_bind.queue.class: Hollo\BindBundle\Helper\Queue
 
 services:
-  hollo_bind.dns:
-    class: %hollo_bind.dns.class%
+  hollo_bind.bind:
+    class: %hollo_bind.bind.class%
+    arguments: [@doctrine.orm.entity_manager]
+  hollo_bind.lock:
+    class: %hollo_bind.lock.class%
+    arguments: [@doctrine.orm.entity_manager]
+  hollo_bind.queue:
+    class: %hollo_bind.queue.class%
     arguments: [@doctrine.orm.entity_manager]
