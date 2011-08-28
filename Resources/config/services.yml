@@ -1,0 +1,7 @@
+parameters:
+#    hollo_bind.example.class: Hollo\BindBundle\Example
+
+services:
+#    hollo_bind.example:
+#        class: %hollo_bind.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
