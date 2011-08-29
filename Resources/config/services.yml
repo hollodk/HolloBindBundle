@@ -12,4 +12,4 @@ services:
     arguments: [@doctrine.orm.entity_manager]
   hollo_bind.queue:
     class: %hollo_bind.queue.class%
-    arguments: [@doctrine.orm.entity_manager]
+    arguments: [@doctrine.orm.entity_manager, @event_dispatcher]
