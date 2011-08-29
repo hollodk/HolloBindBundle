@@ -7,3 +7,7 @@ TODO
 - validate hostname
 - make sure string ends on . ( dot ), because of bind
 - deleted bind config after delete domain
+- view raw config
+- integrate with bind
+- dynamic nameserver values
+- dynamic hostmaster value
