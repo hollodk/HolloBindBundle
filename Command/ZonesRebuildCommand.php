@@ -19,5 +19,7 @@ class ZonesRebuildCommand extends ContainerAwareCommand
 
   protected function execute(InputInterface $input, OutputInterface $output)
   {
+    $bind = $this->getContainer()->get('hollo_bind.bind');
+    $bind->rebuildZones();
   }
 }

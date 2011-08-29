@@ -51,6 +51,9 @@ class Queue
 
       $event = new \Hollo\BindBundle\Event\FilterDomainEvent($domain);
       $this->event_dispatcher->dispatch(\Hollo\BindBundle\Event\Events::onDomainAdd, $event);
+
+      $event = new \Hollo\BindBundle\Event\FilterRecordEvent($record);
+      $this->event_dispatcher->dispatch(\Hollo\BindBundle\Event\Events::onRecordAdd, $event);
     }
   }
 

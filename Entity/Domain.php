@@ -79,6 +79,12 @@ class Domain
     private $created_at;
 
     /**
+     * @ORM\OneToMany(targetEntity="Record", mappedBy="domain")
+     */
+    private $records;
+
+
+    /**
      * Get id
      *
      * @return integer
@@ -263,5 +269,29 @@ class Domain
     public function preUpdate()
     {
       $this->setUpdatedAt(new \DateTime());
+    }
+    public function __construct()
+    {
+        $this->records = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add records
+     *
+     * @param Hollo\BindBundle\Entity\Record $records
+     */
+    public function addRecord(\Hollo\BindBundle\Entity\Record $records)
+    {
+        $this->records[] = $records;
+    }
+
+    /**
+     * Get records
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getRecords()
+    {
+        return $this->records;
     }
 }
