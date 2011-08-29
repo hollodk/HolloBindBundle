@@ -1,9 +1,9 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-<h1>New zone</h1>
+<h1>Update zone</h1>
 
-<form method="post" action="{{ path('hollo_bind_adminzone_new') }}">
+<form method="post" action="{{ path('hollo_bind_adminzone_update', {'id':domain.id}) }}">
   {% include "HolloBindBundle:AdminZone:form.html.twig" %}
 </form>
 

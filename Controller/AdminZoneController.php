@@ -30,7 +30,7 @@ class AdminZoneController extends Controller
   public function newAction()
   {
     $queue = new \Hollo\BindBundle\Entity\AddQueue();
-    $form = $this->createForm(new \Hollo\BindBundle\Form\Zone(), $queue);
+    $form = $this->createForm(new \Hollo\BindBundle\Form\AddQueue(), $queue);
 
     if ($this->getRequest()->getMethod() == 'POST') {
       $form->bindRequest($this->getRequest());
@@ -57,6 +57,29 @@ class AdminZoneController extends Controller
    */
   public function updateAction($id)
   {
+    $em = $this->getDoctrine()->getEntityManager();
+
+    $domain = $em->find('HolloBindBundle:Domain', $id);
+    $form = $this->createForm(new \Hollo\BindBundle\Form\Domain(), $domain);
+
+    if ($this->getRequest()->getMethod() == 'POST') {
+      $form->bindRequest($this->getRequest());
+
+      if ($form->isValid()) {
+        $em->persist($domain);
+        $em->flush();
+
+        $this->get('session')->setFlash('notice','Your data has been saved.');
+
+        return $this->redirect($this->generateUrl('hollo_bind_adminzone_index'));
+      }
+    }
+
+    return array(
+      'domain' => $domain,
+      'form' => $form->createView()
+    );
+
   }
 
   /**

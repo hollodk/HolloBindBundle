@@ -5,7 +5,7 @@ namespace Hollo\BindBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class Zone extends AbstractType
+class Domain extends AbstractType
 {
   public function buildForm(FormBuilder $builder, array $options)
   {
@@ -20,13 +20,13 @@ class Zone extends AbstractType
   public function getDefaultOptions(array $options)
   {
     return array(
-      'data_class' => 'Hollo\BindBundle\Entity\AddQueue'
+      'data_class' => 'Hollo\BindBundle\Entity\Domain'
     );
   }
 
   public function getName()
   {
-    return 'zone';
+    return 'domain';
   }
 }
 
