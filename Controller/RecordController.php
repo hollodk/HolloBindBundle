@@ -31,5 +31,15 @@ class RecordController extends Controller
    */
   public function deleteAction($id)
   {
+    $em = $this->getDoctrine()->getEntityManager();
+    $record = $em->find('HolloBindBundle:Record', $id);
+
+    $em->remove($record);
+    $em->flush();
+
+    $event = new \Hollo\BindBundle\Event\FilterRecordEvent($record);
+    $this->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onRecordDel, $event);
+
+    return $this->redirect($this->generateUrl('hollo_bind_zone_index', array('id' => $record->getDomain()->getId())));
   }
 }

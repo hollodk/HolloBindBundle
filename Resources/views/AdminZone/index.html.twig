@@ -19,8 +19,9 @@
       <td>{{ domain.domain }}</td>
       <td>{{ domain.address }}</td>
       <td>{{ domain.password }}</td>
-      <td>{{ domain.createdAt|date('Y-m-d H:i:s') }}</td>
+      <td>{{ domain.updatedAt|date('Y-m-d H:i:s') }}</td>
       <td>
+        <a href="{{ path('hollo_bind_zone_index', {'id':domain.id}) }}">Records</a>
         <a href="{{ path('hollo_bind_adminzone_update', {'id':domain.id}) }}">Edit</a>
         <a href="{{ path('hollo_bind_adminzone_delete', {'id':domain.id}) }}">Delete</a>
       </td>

@@ -11,10 +11,16 @@ class ZoneController extends Controller
 {
   /**
    * @Template()
-   * @Route("/zone")
+   * @Route("/zone/{id}")
    */
-  public function indexAction()
+  public function indexAction($id)
   {
+    $em = $this->getDoctrine()->getEntityManager();
+    $domain = $em->find('HolloBindBundle:Domain', $id);
+
+    return array(
+      'domain' => $domain
+    );
   }
 
   /**

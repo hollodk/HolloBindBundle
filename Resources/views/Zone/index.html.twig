@@ -1,0 +1,35 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<h1>{{ domain.domain }}</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Updated at</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for record in domain.records %}
+    <tr>
+      <td>{{ record.name }}</td>
+      <td>{{ record.address }}</td>
+      <td>{{ domain.updatedAt|date('Y-m-d H:i:s') }}</td>
+      <td>
+        <a href="{{ path('hollo_bind_record_update', {'id':record.id}) }}">Edit</a>
+        <a href="{{ path('hollo_bind_record_delete', {'id':record.id}) }}">Delete</a>
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="5">There is no records at the time.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<p><a href="{{ path('hollo_bind_record_new', {'id':domain.id}) }}">New record</a></p>
+
+{% endblock %}
