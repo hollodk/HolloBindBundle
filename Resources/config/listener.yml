@@ -1,0 +1,6 @@
+services:
+  hollo_bind.rewrite_config_listener:
+    class: Hollo\BindBundle\Listener\WriteConfigListener
+    arguments: [@doctrine.orm.entity_manager, @hollo_bind.bind]
+    tags:
+      - { name: kernel.event_listener, event: domain.add, method: onDomainAdd }
