@@ -1,0 +1,8 @@
+TODO
+====
+
+- check for unique domains ( domain table, and dns_add_queue )
+- check for unique records (record table )
+- validate IP addr
+- validate hostname
+- make sure string ends on . ( dot ), because of bind
