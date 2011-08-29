@@ -5,10 +5,12 @@ namespace Hollo\BindBundle\Helper;
 class Queue
 {
   private $em;
+  private $event_dispatcher;
 
-  public function __construct($em)
+  public function __construct($em, $event_dispatcher)
   {
     $this->em = $em;
+    $this->event_dispatcher = $event_dispatcher;
   }
 
   public function processQueue()
@@ -46,6 +48,9 @@ class Queue
       $this->em->persist($zone);
 
       $this->em->flush();
+
+      $event = new \Hollo\BindBundle\Event\FilterDomainEvent($domain);
+      $this->event_dispatcher->dispatch(\Hollo\BindBundle\Event\Events::onDomainAdd, $event);
     }
   }
 
