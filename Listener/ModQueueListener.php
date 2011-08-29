@@ -24,4 +24,15 @@ class ModQueueListener
     $this->em->persist($queue);
     $this->em->flush();
   }
+
+  public function onDomainAdd(\Hollo\BindBundle\Event\FilterDomainEvent $event)
+  {
+    $queue = new \Hollo\BindBundle\Entity\ModQueue();
+    $queue->setDomain($event->getDomain());
+    $queue->setType('add');
+
+    $this->em->persist($queue);
+    $this->em->flush();
+  }
+
 }

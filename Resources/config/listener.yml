@@ -1,9 +1,4 @@
 services:
-  hollo_bind.write_config_listener:
-    class: Hollo\BindBundle\Listener\WriteConfigListener
-    arguments: [@doctrine.orm.entity_manager, @hollo_bind.bind]
-    tags:
-      - { name: kernel.event_listener, event: domain.add, method: onDomainAdd }
   hollo_bind.write_zone_listener:
     class: Hollo\BindBundle\Listener\WriteZoneListener
     arguments: [@doctrine.orm.entity_manager, @hollo_bind.bind]
@@ -19,3 +14,8 @@ services:
     arguments: [@doctrine.orm.entity_manager]
     tags:
       - { name: kernel.event_listener, event: record.add, method: onRecordAdd }
+  hollo_bind.mod_queue_listener:
+    class: Hollo\BindBundle\Listener\ModQueueListener
+    arguments: [@doctrine.orm.entity_manager]
+    tags:
+      - { name: kernel.event_listener, event: domain.add, method: onDomainAdd }

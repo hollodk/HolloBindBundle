@@ -29,16 +29,19 @@ class AdminZoneController extends Controller
    */
   public function newAction()
   {
-    $queue = new \Hollo\BindBundle\Entity\AddQueue();
-    $form = $this->createForm(new \Hollo\BindBundle\Form\AddQueue(), $queue);
+    $domain = new \Hollo\BindBundle\Entity\Domain();
+    $form = $this->createForm(new \Hollo\BindBundle\Form\Domain(), $domain);
 
     if ($this->getRequest()->getMethod() == 'POST') {
       $form->bindRequest($this->getRequest());
 
       if ($form->isValid()) {
         $em = $this->getDoctrine()->getEntityManager();
-        $em->persist($queue);
+        $em->persist($domain);
         $em->flush();
+
+        $event = new \Hollo\BindBundle\Event\FilterDomainEvent($domain);
+        $this->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onDomainAdd, $event);
 
         $this->get('session')->setFlash('notice','Your data has been saved.');
 
@@ -68,6 +71,9 @@ class AdminZoneController extends Controller
       if ($form->isValid()) {
         $em->persist($domain);
         $em->flush();
+
+        $event = new \Hollo\BindBundle\Event\FilterDomainEvent($domain);
+        $this->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onDomainMod, $event);
 
         $this->get('session')->setFlash('notice','Your data has been saved.');
 
