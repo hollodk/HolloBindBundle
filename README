@@ -11,3 +11,6 @@ TODO
 - integrate with bind
 - dynamic nameserver values
 - dynamic hostmaster value
+- update record
+- record.mod listener
+- dynamic config locations
