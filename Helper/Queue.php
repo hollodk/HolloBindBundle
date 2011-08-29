@@ -46,7 +46,6 @@ class Queue
       $this->em->persist($domain);
       $this->em->persist($record);
       $this->em->persist($zone);
-
       $this->em->flush();
 
       $event = new \Hollo\BindBundle\Event\FilterDomainEvent($domain);

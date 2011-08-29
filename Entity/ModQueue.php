@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="dns_mod_queue")
  * @ORM\Entity(repositoryClass="Hollo\BindBundle\Entity\ModQueueRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class ModQueue
 {
@@ -20,13 +21,6 @@ class ModQueue
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var integer $domain_id
-     *
-     * @ORM\Column(name="domain_id", type="integer")
-     */
-    private $domain_id;
 
     /**
      * @var datetime $created_at
@@ -42,6 +36,11 @@ class ModQueue
      */
     private $completed;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Domain")
+     */
+    private $domain;
+
 
     /**
      * Get id
@@ -51,26 +50,6 @@ class ModQueue
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set domain_id
-     *
-     * @param integer $domainId
-     */
-    public function setDomainId($domainId)
-    {
-        $this->domain_id = $domainId;
-    }
-
-    /**
-     * Get domain_id
-     *
-     * @return integer
-     */
-    public function getDomainId()
-    {
-        return $this->domain_id;
     }
 
     /**
@@ -111,5 +90,34 @@ class ModQueue
     public function getCompleted()
     {
         return $this->completed;
+    }
+
+    /**
+     * Set domain
+     *
+     * @param Hollo\BindBundle\Entity\Domain $domain
+     */
+    public function setDomain(\Hollo\BindBundle\Entity\Domain $domain)
+    {
+        $this->domain = $domain;
+    }
+
+    /**
+     * Get domain
+     *
+     * @return Hollo\BindBundle\Entity\Domain
+     */
+    public function getDomain()
+    {
+        return $this->domain;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function prePersist()
+    {
+      $this->setCompleted(false);
+      $this->setCreatedAt(new \DateTime());
     }
 }
