@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="dns_lock")
  * @ORM\Entity(repositoryClass="Hollo\BindBundle\Entity\LockRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Lock
 {
@@ -84,5 +85,13 @@ class Lock
     public function getCreatedAt()
     {
         return $this->created_at;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function prePersist()
+    {
+      $this->setCreatedAt(new \DateTime());
     }
 }
