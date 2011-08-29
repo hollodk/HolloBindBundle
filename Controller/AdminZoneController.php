@@ -65,6 +65,14 @@ class AdminZoneController extends Controller
    */
   public function deleteAction($id)
   {
+    $em = $this->getDoctrine()->getEntityManager();
+    $domain = $em->find('HolloBindBundle:Domain', $id);
+
+    $em->remove($domain);
+    $em->flush();
+
+    $this->get('session')->setFlash('notice','Domain has been deleted.');
+    return $this->redirect($this->generateUrl('hollo_bind_adminzone_index'));
   }
 
   /**

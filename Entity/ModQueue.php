@@ -45,6 +45,7 @@ class ModQueue
 
     /**
      * @ORM\ManyToOne(targetEntity="Domain")
+     * @ORM\JoinColumn(name="domain_id", referencedColumnName="id", onDelete="cascade")
      */
     private $domain;
 

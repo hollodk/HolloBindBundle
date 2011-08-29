@@ -6,3 +6,4 @@ TODO
 - validate IP addr
 - validate hostname
 - make sure string ends on . ( dot ), because of bind
+- deleted bind config after delete
