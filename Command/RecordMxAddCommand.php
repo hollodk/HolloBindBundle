@@ -41,6 +41,7 @@ class RecordMxAddCommand extends ContainerAwareCommand
 
     $queue = new \Hollo\BindBundle\Entity\ModQueue();
     $queue->setDomain($domain);
+    $queue->setType('modified');
 
     $em->persist($record);
     $em->persist($queue);

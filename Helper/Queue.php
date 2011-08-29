@@ -17,7 +17,6 @@ class Queue
   {
     $this->processModQueue();
     $this->processAddQueue();
-    $this->processDelQueue();
   }
 
   private function processAddQueue()
@@ -56,10 +55,6 @@ class Queue
     }
   }
 
-  private function processDelQueue()
-  {
-  }
-
   private function processModQueue()
   {
     $queue = $this->em->getRepository('HolloBindBundle:ModQueue')->findAll();
@@ -69,7 +64,6 @@ class Queue
       $this->event_dispatcher->dispatch(\Hollo\BindBundle\Event\Events::onDomainMod, $event);
 
       $domain->setCompleted(true);
-
       $this->em->persist($domain);
     }
 

@@ -23,18 +23,25 @@ class ModQueue
     private $id;
 
     /**
-     * @var datetime $created_at
-     *
-     * @ORM\Column(name="created_at", type="datetime")
-     */
-    private $created_at;
-
-    /**
      * @var boolean $completed
      *
      * @ORM\Column(name="completed", type="boolean")
      */
     private $completed;
+
+    /**
+     * @var boolean $type
+     *
+     * @ORM\Column(name="type", type="string")
+     */
+    private $type;
+
+    /**
+     * @var datetime $created_at
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $created_at;
 
     /**
      * @ORM\ManyToOne(targetEntity="Domain")
@@ -110,6 +117,26 @@ class ModQueue
     public function getDomain()
     {
         return $this->domain;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 
     /**
