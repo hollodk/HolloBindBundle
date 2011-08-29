@@ -14,3 +14,4 @@ TODO
 - update record
 - record.mod listener
 - dynamic config locations
+- make sure the queue script write configs
