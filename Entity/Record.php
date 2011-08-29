@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="dns_record")
  * @ORM\Entity(repositoryClass="Hollo\BindBundle\Entity\RecordRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Record
 {
@@ -36,11 +37,32 @@ class Record
     private $address;
 
     /**
+     * @var string $priority
+     *
+     * @ORM\Column(name="priority", type="smallint", nullable="true")
+     */
+    private $priority;
+
+    /**
      * @var string $type
      *
      * @ORM\Column(name="type", type="string", length=255)
      */
     private $type;
+
+    /**
+     * @var string $created_at
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $created_at;
+
+    /**
+     * @var string $updated_at
+     *
+     * @ORM\Column(name="updated_at", type="datetime")
+     */
+    private $updated_at;
 
     /**
      * @ORM\ManyToOne(targetEntity="Domain")
@@ -136,5 +158,82 @@ class Record
     public function getDomain()
     {
         return $this->domain;
+    }
+
+    /**
+     * Set priority
+     *
+     * @param smallint $priority
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+    }
+
+    /**
+     * Get priority
+     *
+     * @return smallint
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
+
+    /**
+     * Set created_at
+     *
+     * @param datetime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->created_at = $createdAt;
+    }
+
+    /**
+     * Get created_at
+     *
+     * @return datetime
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * Set updated_at
+     *
+     * @param datetime $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updated_at = $updatedAt;
+    }
+
+    /**
+     * Get updated_at
+     *
+     * @return datetime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function prePersist()
+    {
+      $this->setCreatedAt(new \DateTime());
+      $this->setUpdatedAt(new \DateTime());
+    }
+
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate()
+    {
+      $this->setUpdatedAt(new \DateTime());
     }
 }
