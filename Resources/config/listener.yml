@@ -14,4 +14,8 @@ services:
     arguments: [@doctrine.orm.entity_manager, @hollo_bind.bind]
     tags:
       - { name: kernel.event_listener, event: domain.mod, method: onDomainMod }
-
+  hollo_bind.mod_queue_listener:
+    class: Hollo\BindBundle\Listener\ModQueueListener
+    arguments: [@doctrine.orm.entity_manager]
+    tags:
+      - { name: kernel.event_listener, event: record.add, method: onRecordAdd }

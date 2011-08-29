@@ -39,13 +39,11 @@ class RecordCnameAddCommand extends ContainerAwareCommand
     $record->setAddress($address);
     $record->setType('CNAME');
 
-    $queue = new \Hollo\BindBundle\Entity\ModQueue();
-    $queue->setDomain($domain);
-    $queue->setType('modified');
-
     $em->persist($record);
-    $em->persist($queue);
     $em->flush();
+
+    $event = new \Hollo\BindBundle\Event\FilterRecordEvent($record);
+    $this->getContainer()->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onRecordAdd, $event);
 
     $output->writeln(sprintf('Added record <comment>%s</comment>', $name.'.'.$domain->getDomain()));
   }
