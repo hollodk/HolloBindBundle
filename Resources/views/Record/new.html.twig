@@ -1,0 +1,33 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<h1>New record</h1>
+
+<form method="post" action="{{ path('hollo_bind_record_new', {'id':domain.id}) }}">
+  <fieldset>
+    <legend>A Record</legend>
+    {{ form_widget(form_a) }}
+
+    <input type="submit" />
+  </fieldset>
+</form>
+
+<form method="post" action="{{ path('hollo_bind_record_new', {'id':domain.id}) }}">
+  <fieldset>
+    <legend>CNAME Record</legend>
+    {{ form_widget(form_cname) }}
+
+    <input type="submit" />
+  </fieldset>
+</form>
+
+<form method="post" action="{{ path('hollo_bind_record_new', {'id':domain.id}) }}">
+  <fieldset>
+    <legend>MX Record</legend>
+    {{ form_widget(form_mx) }}
+
+    <input type="submit" />
+  </fieldset>
+</form>
+
+{% endblock %}

@@ -11,10 +11,76 @@ class RecordController extends Controller
 {
   /**
    * @Template()
-   * @Route("/zone/new")
+   * @Route("/zone/new/{id}")
    */
-  public function newAction()
+  public function newAction($id)
   {
+    $em = $this->getDoctrine()->getEntityManager();
+    $domain = $em->find('HolloBindBundle:Domain', $id);
+
+    $record_a = new \Hollo\BindBundle\Entity\Record();
+    $record_cname = new \Hollo\BindBundle\Entity\Record();
+    $record_mx = new \Hollo\BindBundle\Entity\Record();
+
+    $form_a = $this->createForm(new \Hollo\BindBundle\Form\RecordA(), $record_a);
+    $form_cname = $this->createForm(new \Hollo\BindBundle\Form\RecordCname(), $record_cname);
+    $form_mx = $this->createForm(new \Hollo\BindBundle\Form\RecordMx(), $record_mx);
+
+    if ($this->getRequest()->getMethod() == 'POST') {
+      if ($this->getRequest()->get($form_a->getName())) {
+        $form_a->bindRequest($this->getRequest());
+
+        if ($form_a->isValid()) {
+          $record_a->setType('A');
+          $record_a->setDomain($domain);
+          $em->persist($record_a);
+          $em->flush();
+
+          $event = new \Hollo\BindBundle\Event\FilterRecordEvent($record_a);
+          $this->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onRecordAdd, $event);
+          $this->get('session')->setFlash('notice','Your data has been saved.');
+          return $this->redirect($this->generateUrl('hollo_bind_zone_index', array('id' => $domain->getId())));
+        }
+      }
+      if ($this->getRequest()->get($form_cname->getName())) {
+        $form_cname->bindRequest($this->getRequest());
+
+        if ($form_cname->isValid()) {
+          $record_cname->setType('CNAME');
+          $record_cname->setDomain($domain);
+          $em->persist($record_cname);
+          $em->flush();
+
+          $event = new \Hollo\BindBundle\Event\FilterRecordEvent($record_cname);
+          $this->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onRecordAdd, $event);
+          $this->get('session')->setFlash('notice','Your data has been saved.');
+          return $this->redirect($this->generateUrl('hollo_bind_zone_index', array('id' => $domain->getId())));
+        }
+      }
+      if ($this->getRequest()->get($form_mx->getName())) {
+        $form_mx->bindRequest($this->getRequest());
+
+        if ($form_mx->isValid()) {
+          $record_mx->setType('CNAME');
+          $record_mx->setDomain($domain);
+          $em->persist($record_mx);
+          $em->flush();
+
+          $event = new \Hollo\BindBundle\Event\FilterRecordEvent($record_mx);
+          $this->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onRecordAdd, $event);
+          $this->get('session')->setFlash('notice','Your data has been saved.');
+          return $this->redirect($this->generateUrl('hollo_bind_zone_index', array('id' => $domain->getId())));
+        }
+      }
+    }
+
+    return array(
+      'domain' => $domain,
+      'form_a' => $form_a->createView(),
+      'form_cname' => $form_cname->createView(),
+      'form_mx' => $form_mx->createView()
+    );
+
   }
 
   /**

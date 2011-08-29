@@ -13,10 +13,6 @@ services:
     class: Hollo\BindBundle\Listener\ModQueueListener
     arguments: [@doctrine.orm.entity_manager]
     tags:
-      - { name: kernel.event_listener, event: record.add, method: onRecordAdd }
-      - { name: kernel.event_listener, event: record.del, method: onRecordDel }
-  hollo_bind.mod_queue_listener:
-    class: Hollo\BindBundle\Listener\ModQueueListener
-    arguments: [@doctrine.orm.entity_manager]
-    tags:
       - { name: kernel.event_listener, event: domain.add, method: onDomainAdd }
+      - { name: kernel.event_listener, event: record.del, method: onRecordDel }
+      - { name: kernel.event_listener, event: record.add, method: onRecordAdd }

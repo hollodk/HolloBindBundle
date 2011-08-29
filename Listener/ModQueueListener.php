@@ -19,7 +19,7 @@ class ModQueueListener
   {
     $queue = new \Hollo\BindBundle\Entity\ModQueue();
     $queue->setDomain($event->getRecord()->getDomain());
-    $queue->setType('modified');
+    $queue->setType('record.add');
 
     $this->em->persist($queue);
     $this->em->flush();
@@ -29,7 +29,7 @@ class ModQueueListener
   {
     $queue = new \Hollo\BindBundle\Entity\ModQueue();
     $queue->setDomain($event->getRecord()->getDomain());
-    $queue->setType('deleted');
+    $queue->setType('record.delete');
 
     $this->em->persist($queue);
     $this->em->flush();
@@ -39,7 +39,7 @@ class ModQueueListener
   {
     $queue = new \Hollo\BindBundle\Entity\ModQueue();
     $queue->setDomain($event->getDomain());
-    $queue->setType('add');
+    $queue->setType('domain.add');
 
     $this->em->persist($queue);
     $this->em->flush();
