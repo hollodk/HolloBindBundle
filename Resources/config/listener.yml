@@ -9,3 +9,9 @@ services:
     arguments: [@doctrine.orm.entity_manager, @hollo_bind.bind]
     tags:
       - { name: kernel.event_listener, event: record.add, method: onRecordAdd }
+  hollo_bind.write_zone_listener:
+    class: Hollo\BindBundle\Listener\WriteZoneListener
+    arguments: [@doctrine.orm.entity_manager, @hollo_bind.bind]
+    tags:
+      - { name: kernel.event_listener, event: domain.mod, method: onDomainMod }
+

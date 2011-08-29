@@ -20,4 +20,9 @@ class WriteZoneListener
   {
     $this->bind->writeZone($event->getRecord()->getDomain());
   }
+
+  public function onDomainMod(\Hollo\BindBundle\Event\FilterDomainEvent $event)
+  {
+    $this->bind->writeZone($event->getDomain());
+  }
 }

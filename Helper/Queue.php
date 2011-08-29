@@ -62,5 +62,17 @@ class Queue
 
   private function processModQueue()
   {
+    $queue = $this->em->getRepository('HolloBindBundle:ModQueue')->findAll();
+
+    foreach ($queue as $domain) {
+      $event = new \Hollo\BindBundle\Event\FilterDomainEvent($domain->getDomain());
+      $this->event_dispatcher->dispatch(\Hollo\BindBundle\Event\Events::onDomainMod, $event);
+
+      $domain->setCompleted(true);
+
+      $this->em->persist($domain);
+    }
+
+    $this->em->flush();
   }
 }
