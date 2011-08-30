@@ -3,6 +3,8 @@
 namespace Hollo\BindBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
  * Hollo\BindBundle\Entity\Domain
@@ -10,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="dns_domain")
  * @ORM\Entity(repositoryClass="Hollo\BindBundle\Entity\DomainRepository")
  * @ORM\HasLifecycleCallbacks()
+ * @DoctrineAssert\UniqueEntity("domain")
  */
 class Domain
 {
@@ -25,7 +28,7 @@ class Domain
     /**
      * @var string $domain
      *
-     * @ORM\Column(name="domain", type="string", length=255)
+     * @ORM\Column(name="domain", type="string", length=255, unique="true")
      */
     private $domain;
 

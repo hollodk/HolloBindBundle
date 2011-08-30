@@ -1,7 +1,6 @@
 TODO
 ====
 
-- check for unique domains ( domain table )
 - check for unique records (record table )
 - validate IP addr
 - validate hostname
