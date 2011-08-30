@@ -13,3 +13,4 @@ TODO
 - record.mod listener
 - dynamic config locations
 - make sure the queue script write configs
+- add helper text on fields (INFO: ex.: mail)
