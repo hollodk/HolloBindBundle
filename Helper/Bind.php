@@ -45,7 +45,7 @@ EOF;
     $domains = $this->em->getRepository('HolloBindBundle:Domain')->findAll();
 
     foreach ($domains as $domain) {
-      $this->writeZone($domain);
+      $this->writeZoneConfig($domain);
     }
   }
 
