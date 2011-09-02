@@ -22,6 +22,10 @@ class RecordController extends Controller
     $record_cname = new \Hollo\BindBundle\Entity\Record();
     $record_mx = new \Hollo\BindBundle\Entity\Record();
 
+    $record_a->setAddress($domain->getAddress());
+    $record_cname->setAddress($domain->getDomain());
+    $record_mx->setPriority(10);
+
     $form_a = $this->createForm(new \Hollo\BindBundle\Form\RecordA(), $record_a);
     $form_cname = $this->createForm(new \Hollo\BindBundle\Form\RecordCname(), $record_cname);
     $form_mx = $this->createForm(new \Hollo\BindBundle\Form\RecordMx(), $record_mx);
