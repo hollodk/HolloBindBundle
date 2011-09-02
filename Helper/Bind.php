@@ -65,15 +65,17 @@ EOF;
     ));
 
     foreach ($domain->getRecords() as $record) {
+      $name = ($record->getName() != '') ? $record->getName() : '@';
+
       switch ($record->getType()) {
         case 'A':
-          $output .= $record->getName()."\tA\t".$record->getAddress().PHP_EOL;
+          $output .= $name."\t\t3H\tIN\tA\t".$record->getAddress().PHP_EOL;
           break;
         case 'CNAME':
-          $output .= $record->getName()."\tCNAME\t".$record->getAddress().PHP_EOL;
+          $output .= $name."\t\t3H\tIN\tCNAME\t".$record->getAddress().PHP_EOL;
           break;
         case 'MX':
-          $output .= "\tMX\t".$record->getPriority()."\t".$record->getAddress().PHP_EOL;
+          $output .= $name."\t\t3H\tIN\tMX\t".$record->getPriority()."\t".$record->getAddress().PHP_EOL;
           break;
       }
     }
