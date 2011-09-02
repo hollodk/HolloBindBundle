@@ -21,6 +21,7 @@ class Bind
 
   public function reloadZone($domain)
   {
+    exec('/etc/init.d/bind reload');
   }
 
   public function writeConfig()
@@ -44,6 +45,7 @@ EOF;
     }
 
     file_put_contents($this->config_file, $output);
+    $this->reloadZone();
   }
 
   public function buildZones()
@@ -93,5 +95,6 @@ EOF;
     $output = $this->getZoneConfig($domain);
 
     file_put_contents($this->zone_path.'/'.$letter.'/'.$domain->getDomain(), $output);
+    $this->reloadZone();
   }
 }
