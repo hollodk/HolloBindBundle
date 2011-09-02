@@ -17,22 +17,29 @@ class Queue
 
   public function processQueue()
   {
-    $this->processModQueue();
-  }
-
-  private function processModQueue()
-  {
     $queue = $this->em->getRepository('HolloBindBundle:ModQueue')->findAll();
 
-    foreach ($queue as $domain) {
-      $event = new \Hollo\BindBundle\Event\FilterDomainEvent($domain->getDomain());
-      $this->event_dispatcher->dispatch(\Hollo\BindBundle\Event\Events::onDomainMod, $event);
-
-      $domain->setCompleted(true);
-      $this->em->persist($domain);
-
-      if ($domain->getType() == 'add')
+    foreach ($queue as $item) {
+      switch ($item->getType()) {
+      case 'domain.add':
         $this->bind->writeConfig();
+        $this->bind->writeZoneConfig($item->getDomain());
+        break;
+      case 'domain.modified':
+        $this->bind->writeZoneConfig($item->getDomain());
+        break;
+      case 'domain.delete':
+        $this->bind->writeConfig();
+        break;
+      case 'record.add':
+      case 'record.modified':
+      case 'record.delete':
+        $this->bind->writeZoneConfig($item->getDomain());
+        break;
+      }
+
+      $item->setCompleted(true);
+      $this->em->persist($item);
     }
 
     $this->em->flush();
