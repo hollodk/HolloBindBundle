@@ -23,7 +23,7 @@ class RecordController extends Controller
     $record_mx = new \Hollo\BindBundle\Entity\Record();
 
     $record_a->setAddress($domain->getAddress());
-    $record_cname->setAddress($domain->getDomain());
+    $record_cname->setAddress($domain->getDomain().'.');
     $record_mx->setPriority(10);
 
     $form_a = $this->createForm(new \Hollo\BindBundle\Form\RecordA(), $record_a);
