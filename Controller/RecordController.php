@@ -11,7 +11,7 @@ class RecordController extends Controller
 {
   /**
    * @Template()
-   * @Route("/zone/new/{id}")
+   * @Route("/record/new/{id}")
    */
   public function newAction($id)
   {
@@ -80,20 +80,56 @@ class RecordController extends Controller
       'form_cname' => $form_cname->createView(),
       'form_mx' => $form_mx->createView()
     );
-
   }
 
   /**
    * @Template()
-   * @Route("/zone/update/{id}")
+   * @Route("/record/update/{id}")
    */
   public function updateAction($id)
   {
+    $em = $this->getDoctrine()->getEntityManager();
+    $record = $em->find('HolloBindBundle:Record', $id);
+
+    switch ($record->getType()) {
+    case 'A':
+      $form = $this->createForm(new \Hollo\BindBundle\Form\RecordA(), $record);
+      break;
+    case 'CNAME':
+      $form = $this->createForm(new \Hollo\BindBundle\Form\RecordCname(), $record);
+      break;
+    case 'MX':
+      $form = $this->createForm(new \Hollo\BindBundle\Form\RecordMx(), $record);
+      break;
+    }
+
+    if ($this->getRequest()->getMethod() == 'POST') {
+      $form->bindRequest($this->getRequest());
+
+      if ($form->isValid()) {
+        $em->persist($record);
+        $em->flush();
+
+        $event = new \Hollo\BindBundle\Event\FilterRecordEvent($record);
+        $this->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onRecordAdd, $event);
+
+        $event = new \Hollo\BindBundle\Event\FilterRecordEvent($record);
+        $this->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onRecordMod, $event);
+
+        $this->get('session')->setFlash('notice','Your data has been saved.');
+        return $this->redirect($this->generateUrl('hollo_bind_zone_index', array('id' => $record->getDomain()->getId())));
+      }
+    }
+
+    return array(
+      'record' => $record,
+      'form' => $form->createView(),
+    );
   }
 
   /**
    * @Template()
-   * @Route("/zone/delete/{id}")
+   * @Route("/record/delete/{id}")
    */
   public function deleteAction($id)
   {

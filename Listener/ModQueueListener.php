@@ -35,6 +35,16 @@ class ModQueueListener
     $this->em->flush();
   }
 
+  public function onRecordMod(\Hollo\BindBundle\Event\FilterRecordEvent $event)
+  {
+    $queue = new \Hollo\BindBundle\Entity\ModQueue();
+    $queue->setDomain($event->getRecord()->getDomain());
+    $queue->setType('record.modified');
+
+    $this->em->persist($queue);
+    $this->em->flush();
+  }
+
   public function onDomainAdd(\Hollo\BindBundle\Event\FilterDomainEvent $event)
   {
     $queue = new \Hollo\BindBundle\Entity\ModQueue();

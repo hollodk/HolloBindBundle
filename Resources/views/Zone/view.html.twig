@@ -1,0 +1,13 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<h1>{{ domain.domain }}</h1>
+
+<fieldset>
+  <legend>Zone Config</legend>
+
+  <textarea rows="30" cols="80">{{ output }}</textarea>
+
+</fieldset>
+
+{% endblock %}

@@ -6,11 +6,13 @@ class Bind
 {
   private $em;
   private $templating;
+  private $hostmaster;
 
-  public function __construct($em, $templating)
+  public function __construct($em, $templating, $hostmaster)
   {
     $this->em = $em;
     $this->templating = $templating;
+    $this->hostmaster = $hostmaster;
   }
 
   public function reloadZone($domain)
@@ -47,17 +49,12 @@ EOF;
     }
   }
 
-  public function writeZone($domain, $return = false)
+  public function getZoneConfig($domain)
   {
-    $letter = substr($domain->getDomain(), 0, 1);
-
-    if (!file_exists('/var/named/'.$letter) && !$return)
-      mkdir('/var/named/'.$letter, 0755);
-
     $output = $this->templating->render('HolloBindBundle:Bind:zone.conf.txt', array(
-      'ns1' => 'ns1.hollo.dk',
-      'ns2' => 'ns2.hollo.dk',
-      'hostmaster' => 'ns1.hollo.dk',
+      'ns1' => $domain->getNs1(),
+      'ns2' => $domain->getNs2(),
+      'hostmaster' => $this->hostmaster,
       'serial' => time()
     ));
 
@@ -74,6 +71,18 @@ EOF;
           break;
       }
     }
+
+    return $output;
+  }
+
+  public function writeZoneConfig($domain)
+  {
+    $letter = substr($domain->getDomain(), 0, 1);
+
+    if (!file_exists('/var/named/'.$letter))
+      mkdir('/var/named/'.$letter, 0755);
+
+    $output = $this->getZoneConfig($domain);
 
     file_put_contents('/var/named/'.$letter.'/'.$domain->getDomain(), $output);
   }

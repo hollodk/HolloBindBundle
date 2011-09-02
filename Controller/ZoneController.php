@@ -25,10 +25,20 @@ class ZoneController extends Controller
 
   /**
    * @Template()
-   * @Route("/zone/view")
+   * @Route("/zone/view/{id}")
    */
-  public function viewAction()
+  public function viewAction($id)
   {
+    $em = $this->getDoctrine()->getEntityManager();
+    $domain = $em->find('HolloBindBundle:Domain', $id);
+
+    $bind = $this->get('hollo_bind.bind');
+    $output = $bind->getZoneConfig($domain);
+
+    return array(
+      'domain' => $domain,
+      'output' => $output
+    );
   }
 
   /**

@@ -24,21 +24,20 @@ class ZoneAddCommand extends ContainerAwareCommand
 
   protected function execute(InputInterface $input, OutputInterface $output)
   {
-    $domain = $input->getArgument('domain');
-    $address = $input->getArgument('address');
-    $description = $input->getArgument('description');
-
-    $queue = new \Hollo\BindBundle\Entity\AddQueue();
-    $queue->setDomain($domain);
-    $queue->setAddress($address);
-    $queue->setDescription($description);
-    $queue->setNs1('ns1.hollo.dk');
-    $queue->setNs2('ns2.hollo.dk');
+    $domain = new \Hollo\BindBundle\Entity\Domain();
+    $domain->setDomain($input->getArgument('domain'));
+    $domain->setAddress($input->getArgument('address'));
+    $domain->setDescription($input->getArgument('description'));
+    $domain->setNs1($this->getContainer()->getParameter('hollo_bind.ns1'));
+    $domain->setNs2($this->getContainer()->getParameter('hollo_bind.ns2'));
 
     $em = $this->getContainer()->get('doctrine.orm.entity_manager');
-    $em->persist($queue);
+    $em->persist($domain);
     $em->flush();
 
-    $output->writeln(sprintf('Added zone <comment>%s</comment>', $domain));
+    $event = new \Hollo\BindBundle\Event\FilterDomainEvent($domain);
+    $this->getContainer()->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onDomainAdd, $event);
+
+    $output->writeln(sprintf('Added zone <comment>%s</comment>', $domain->getDomain()));
   }
 }

@@ -3,6 +3,8 @@
 {% block body %}
 <h1>{{ domain.domain }}</h1>
 
+<p><a href="{{ path('hollo_bind_zone_view', {'id':domain.id}) }}">View Config</a></p>
+
 <table>
   <thead>
     <tr>

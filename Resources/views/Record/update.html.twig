@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<h1>Update record</h1>
+
+<form method="post" action="{{ path('hollo_bind_record_update', {'id':record.id}) }}">
+  <fieldset>
+    <legend>Record</legend>
+    {{ form_widget(form) }}
+
+    <input type="submit" />
+  </fieldset>
+</form>
+
+{% endblock %}

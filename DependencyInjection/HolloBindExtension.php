@@ -14,16 +14,20 @@ use Symfony\Component\DependencyInjection\Loader;
  */
 class HolloBindExtension extends Extension
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function load(array $configs, ContainerBuilder $container)
-    {
-        $configuration = new Configuration();
-        $config = $this->processConfiguration($configuration, $configs);
+  /**
+   * {@inheritDoc}
+   */
+  public function load(array $configs, ContainerBuilder $container)
+  {
+    $configuration = new Configuration();
+    $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yml');
-        $loader->load('listener.yml');
-    }
+    $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+    $loader->load('services.yml');
+    $loader->load('listener.yml');
+
+    $container->setParameter('hollo_bind.ns1', $config['ns1']);
+    $container->setParameter('hollo_bind.ns2', $config['ns2']);
+    $container->setParameter('hollo_bind.hostmaster', $config['hostmaster']);
+  }
 }

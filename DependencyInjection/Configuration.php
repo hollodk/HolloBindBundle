@@ -22,8 +22,10 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
           ->children()
-          ->scalarNode('ns1')->isRequired()->end()
-          ->scalarNode('ns2')->isRequired()->end();
+            ->scalarNode('ns1')->defaultValue('ns1.example.com')->end()
+            ->scalarNode('ns2')->defaultValue('ns2.example.com')->end()
+            ->scalarNode('hostmaster')->defaultValue('ns1.example.com')->end()
+          ->end();
 
         return $treeBuilder;
     }
