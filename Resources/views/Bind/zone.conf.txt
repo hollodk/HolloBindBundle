@@ -3,9 +3,9 @@ $TTL 3H
                         {{ serial }}
                         3H
                         1H
-                        3W
-                        3H )
+                        1W
+                        1H )
 
-@       IN      NS      {{ ns1 }}
-@       IN      NS      {{ ns2 }}
+@       IN      NS      {{ ns1 }}.
+@       IN      NS      {{ ns2 }}.
 ;
