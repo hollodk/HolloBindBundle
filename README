@@ -3,6 +3,4 @@ TODO
 
 - validate IP addr
 - validate hostname
-- make sure string ends on . ( dot ), because of bind
-- integrate with bind
 - add helper text on fields (INFO: ex.: mail)
