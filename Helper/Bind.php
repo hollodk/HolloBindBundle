@@ -9,19 +9,21 @@ class Bind
   private $hostmaster;
   private $config_file;
   private $zone_path;
+  private $bind_init;
 
-  public function __construct($em, $templating, $hostmaster, $config_file, $zone_path)
+  public function __construct($em, $templating, $hostmaster, $config_file, $zone_path, $bind_init)
   {
     $this->em = $em;
     $this->templating = $templating;
     $this->hostmaster = $hostmaster;
     $this->config_file = $config_file;
     $this->zone_path = $zone_path;
+    $this->bind_init = $bind_init;
   }
 
   public function reloadZone()
   {
-    exec('/etc/init.d/bind reload');
+    exec($this->bind_init.' reload');
   }
 
   public function writeConfig()

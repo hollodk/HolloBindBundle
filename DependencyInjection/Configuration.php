@@ -27,6 +27,7 @@ class Configuration implements ConfigurationInterface
             ->scalarNode('hostmaster')->defaultValue('ns1.example.com')->end()
             ->scalarNode('config_file')->defaultValue('/etc/bind/named.conf')->end()
             ->scalarNode('zone_path')->defaultValue('/var/named/zones')->end()
+            ->scalarNode('bind_init')->defaultValue('/etc/init.d/bind9')->end()
           ->end();
 
         return $treeBuilder;
