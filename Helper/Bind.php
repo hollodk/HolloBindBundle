@@ -19,7 +19,7 @@ class Bind
     $this->zone_path = $zone_path;
   }
 
-  public function reloadZone($domain)
+  public function reloadZone()
   {
     exec('/etc/init.d/bind reload');
   }
