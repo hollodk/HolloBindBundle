@@ -1,4 +1,4 @@
 options {
-    directory "/var/named";
+    directory "{{ zone_path }}";
 };
 

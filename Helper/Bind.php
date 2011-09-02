@@ -25,7 +25,9 @@ class Bind
 
   public function writeConfig()
   {
-    $output = $this->templating->render('HolloBindBundle:Bind:named.conf.txt');
+    $output = $this->templating->render('HolloBindBundle:Bind:named.conf.txt', array(
+      'zone_path' => $this->zone_path
+    ));
 
     $domains = $this->em->getRepository('HolloBindBundle:Domain')->findAll();
     foreach ($domains as $domain) {
