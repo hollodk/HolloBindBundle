@@ -103,6 +103,9 @@ class AdminZoneController extends Controller
     $em->remove($domain);
     $em->flush();
 
+    $event = new \Hollo\BindBundle\Event\FilterDomainEvent($domain);
+    $this->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onDomainDel, $event);
+
     $this->get('session')->setFlash('notice','Domain has been deleted.');
     return $this->redirect($this->generateUrl('hollo_bind_adminzone_index'));
   }

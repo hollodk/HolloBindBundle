@@ -55,6 +55,15 @@ class ModQueueListener
     $this->em->flush();
   }
 
+  public function onDomainDel(\Hollo\BindBundle\Event\FilterDomainEvent $event)
+  {
+    $queue = new \Hollo\BindBundle\Entity\ModQueue();
+    $queue->setType('domain.delete');
+
+    $this->em->persist($queue);
+    $this->em->flush();
+  }
+
   public function onDomainMod(\Hollo\BindBundle\Event\FilterDomainEvent $event)
   {
     $queue = new \Hollo\BindBundle\Entity\ModQueue();
