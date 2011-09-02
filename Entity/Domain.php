@@ -40,13 +40,6 @@ class Domain
     private $address;
 
     /**
-     * @var string $password
-     *
-     * @ORM\Column(name="password", type="string", length=255)
-     */
-    private $password;
-
-    /**
      * @var string $ns1
      *
      * @ORM\Column(name="ns1", type="string", length=255)
@@ -135,26 +128,6 @@ class Domain
     public function getAddress()
     {
         return $this->address;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
     }
 
     /**

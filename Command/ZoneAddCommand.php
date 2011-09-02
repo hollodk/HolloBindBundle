@@ -18,7 +18,6 @@ class ZoneAddCommand extends ContainerAwareCommand
       ->setDefinition(array(
         new InputArgument('domain', InputArgument::REQUIRED, 'The domain'),
         new InputArgument('address', InputArgument::REQUIRED, 'The address'),
-        new InputArgument('password', InputArgument::REQUIRED, 'The password'),
         new InputArgument('description', InputArgument::REQUIRED, 'The description'),
       ));
   }
@@ -27,13 +26,11 @@ class ZoneAddCommand extends ContainerAwareCommand
   {
     $domain = $input->getArgument('domain');
     $address = $input->getArgument('address');
-    $password = $input->getArgument('password');
     $description = $input->getArgument('description');
 
     $queue = new \Hollo\BindBundle\Entity\AddQueue();
     $queue->setDomain($domain);
     $queue->setAddress($address);
-    $queue->setPassword($password);
     $queue->setDescription($description);
     $queue->setNs1('ns1.hollo.dk');
     $queue->setNs2('ns2.hollo.dk');
