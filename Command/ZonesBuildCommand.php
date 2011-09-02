@@ -8,18 +8,18 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ZonesRebuildCommand extends ContainerAwareCommand
+class ZonesBuildCommand extends ContainerAwareCommand
 {
   protected function configure()
   {
     $this
-      ->setName('bind:zones:rebuild')
-      ->setDescription('Rebuild zones');
+      ->setName('bind:zones:build')
+      ->setDescription('Build zones');
   }
 
   protected function execute(InputInterface $input, OutputInterface $output)
   {
     $bind = $this->getContainer()->get('hollo_bind.bind');
-    $bind->rebuildZones();
+    $bind->buildZones();
   }
 }

@@ -44,7 +44,7 @@ EOF;
     file_put_contents($this->config_file, $output);
   }
 
-  public function rebuildZones()
+  public function buildZones()
   {
     $domains = $this->em->getRepository('HolloBindBundle:Domain')->findAll();
 
