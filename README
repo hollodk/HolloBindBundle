@@ -4,7 +4,6 @@ TODO
 - validate IP addr
 - validate hostname
 - make sure string ends on . ( dot ), because of bind
-- deleted bind config after delete domain
 - integrate with bind
 - make sure the queue script write configs
 - add helper text on fields (INFO: ex.: mail)
