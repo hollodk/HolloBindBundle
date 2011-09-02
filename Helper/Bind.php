@@ -34,8 +34,8 @@ class Bind
       $output .= <<<EOF
 zone "{$domain->getDomain()}" {
   type master;
-  file "{$letter}/{$domain->getDomain()};
-}
+  file "{$letter}/{$domain->getDomain()}";
+};
 
 
 EOF;
