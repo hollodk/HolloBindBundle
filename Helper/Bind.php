@@ -7,12 +7,16 @@ class Bind
   private $em;
   private $templating;
   private $hostmaster;
+  private $config_file;
+  private $zone_path;
 
-  public function __construct($em, $templating, $hostmaster)
+  public function __construct($em, $templating, $hostmaster, $config_file, $zone_path)
   {
     $this->em = $em;
     $this->templating = $templating;
     $this->hostmaster = $hostmaster;
+    $this->config_file = $config_file;
+    $this->zone_path = $zone_path;
   }
 
   public function reloadZone($domain)
@@ -37,7 +41,7 @@ zone "{$domain->getDomain()}" {
 EOF;
     }
 
-    file_put_contents('/tmp/named.conf', $output);
+    file_put_contents($this->config_file, $output);
   }
 
   public function rebuildZones()
@@ -61,13 +65,13 @@ EOF;
     foreach ($domain->getRecords() as $record) {
       switch ($record->getType()) {
         case 'A':
-          $output .= $record->getName()."\tA\t".$record->getAddress()."\n";
+          $output .= $record->getName()."\tA\t".$record->getAddress().PHP_EOL;
           break;
         case 'CNAME':
-          $output .= $record->getName()."\tCNAME\t".$record->getAddress()."\n";
+          $output .= $record->getName()."\tCNAME\t".$record->getAddress().PHP_EOL;
           break;
         case 'MX':
-          $output .= "\tMX\t".$record->getPriority()."\t".$record->getAddress()."\n";
+          $output .= "\tMX\t".$record->getPriority()."\t".$record->getAddress().PHP_EOL;
           break;
       }
     }
@@ -79,11 +83,11 @@ EOF;
   {
     $letter = substr($domain->getDomain(), 0, 1);
 
-    if (!file_exists('/var/named/'.$letter))
-      mkdir('/var/named/'.$letter, 0755);
+    if (!file_exists($this->zone_path.'/'.$letter))
+      mkdir($this->zone_path.'/'.$letter, 0755);
 
     $output = $this->getZoneConfig($domain);
 
-    file_put_contents('/var/named/'.$letter.'/'.$domain->getDomain(), $output);
+    file_put_contents($this->zone_path.'/'.$letter.'/'.$domain->getDomain(), $output);
   }
 }

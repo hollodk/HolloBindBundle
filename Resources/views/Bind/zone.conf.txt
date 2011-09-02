@@ -1,10 +1,11 @@
-$TTL 2H
+$TTL 604800
 @       IN      SOA     {{ ns1 }} {{ hostmaster }} (
                         {{ serial }}                  ; serial
-                        8H                            ; refresh
-                        2H                            ; retry
-                        4W                            ; expire
-                        2H )                          ; minimum TTL
+                        604800                        ; refresh
+                        86400                         ; retry
+                        2419200                       ; expire
+                        604800 )                      ; minimum TTL
 
                 NS      {{ ns1 }}                     ; name server
                 NS      {{ ns2 }}                     ; name server
+;

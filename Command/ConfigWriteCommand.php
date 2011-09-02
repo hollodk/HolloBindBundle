@@ -8,16 +8,18 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ConfigRewriteCommand extends ContainerAwareCommand
+class ConfigWriteCommand extends ContainerAwareCommand
 {
   protected function configure()
   {
     $this
-      ->setName('bind:config:rewrite')
-      ->setDescription('Rewrite bind config');
+      ->setName('bind:config:write')
+      ->setDescription('Write bind config');
   }
 
   protected function execute(InputInterface $input, OutputInterface $output)
   {
+    $bind = $this->getContainer()->get('hollo_bind.bind');
+    $bind->writeConfig();
   }
 }

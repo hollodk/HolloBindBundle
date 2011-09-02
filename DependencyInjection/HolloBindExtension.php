@@ -29,5 +29,7 @@ class HolloBindExtension extends Extension
     $container->setParameter('hollo_bind.ns1', $config['ns1']);
     $container->setParameter('hollo_bind.ns2', $config['ns2']);
     $container->setParameter('hollo_bind.hostmaster', $config['hostmaster']);
+    $container->setParameter('hollo_bind.config_file', $config['config_file']);
+    $container->setParameter('hollo_bind.zone_path', $config['zone_path']);
   }
 }

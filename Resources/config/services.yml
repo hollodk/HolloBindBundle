@@ -6,7 +6,7 @@ parameters:
 services:
   hollo_bind.bind:
     class: %hollo_bind.bind.class%
-    arguments: [@doctrine.orm.entity_manager, @templating, %hollo_bind.hostmaster%]
+    arguments: [@doctrine.orm.entity_manager, @templating, %hollo_bind.hostmaster%, %hollo_bind.config_file%, %hollo_bind.zone_path%]
   hollo_bind.lock:
     class: %hollo_bind.lock.class%
     arguments: [@doctrine.orm.entity_manager]
