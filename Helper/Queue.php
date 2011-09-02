@@ -17,7 +17,7 @@ class Queue
 
   public function processQueue()
   {
-    $queue = $this->em->getRepository('HolloBindBundle:ModQueue')->findAll();
+    $queue = $this->em->getRepository('HolloBindBundle:ModQueue')->findQueued();
 
     foreach ($queue as $item) {
       switch ($item->getType()) {
