@@ -21,7 +21,7 @@
       <td>
         <a href="{{ path('hollo_bind_domain_index', {'id':domain.id}) }}">Records</a>
         <a href="{{ path('hollo_bind_admindomain_update', {'id':domain.id}) }}">Edit</a>
-        <a href="{{ path('hollo_bind_admindomain_delete', {'id':domain.id}) }}">Delete</a>
+        <a href="{{ path('hollo_bind_admindomain_delete', {'id':domain.id}) }}" onclick="return confirm('Are you sure?');">Delete</a>
       </td>
     </tr>
     {% else %}
