@@ -14,7 +14,7 @@ class OrphansRemoveCommand extends ContainerAwareCommand
   {
     $this
       ->setName('bind:orphans:remove')
-      ->setDescription('Remove orphans zones');
+      ->setDescription('Remove orphans domains');
   }
 
   protected function execute(InputInterface $input, OutputInterface $output)

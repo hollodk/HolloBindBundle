@@ -8,13 +8,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ZoneAddCommand extends ContainerAwareCommand
+class DomainAddCommand extends ContainerAwareCommand
 {
   protected function configure()
   {
     $this
-      ->setName('bind:zone:add')
-      ->setDescription('Add a new zone.')
+      ->setName('bind:domain:add')
+      ->setDescription('Add a new domain')
       ->setDefinition(array(
         new InputArgument('domain', InputArgument::REQUIRED, 'The domain'),
         new InputArgument('address', InputArgument::REQUIRED, 'The address'),
@@ -38,6 +38,6 @@ class ZoneAddCommand extends ContainerAwareCommand
     $event = new \Hollo\BindBundle\Event\FilterDomainEvent($domain);
     $this->getContainer()->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onDomainAdd, $event);
 
-    $output->writeln(sprintf('Added zone <comment>%s</comment>', $domain->getDomain()));
+    $output->writeln(sprintf('Added domain <comment>%s</comment>', $domain->getDomain()));
   }
 }
