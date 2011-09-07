@@ -29,15 +29,8 @@ Add the bundle to any of your existing projects, now all you have to do is:
   - Add the bundle to autoload.php
   - Add the route to config/route.yml
 
-Now go to the url:
 
-http://localhost/admin/domain
-
-You see a basic website with the important urls, that you can copy to fit what ever fits your needs.
-
-In order to change the path for all the extends we have a oneliner to make the task quick for you.
-
-  rgrep HolloBindBundle::base.html.twig . | cut -d':' -f1 | xargs sed -i "s/HolloBindBundle::base.html.twig/::base.html.twig/"
+If you want to see the basic routes checkout Resources/view/base.html.twig.
 
 
 Commands
