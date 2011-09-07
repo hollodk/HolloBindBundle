@@ -3,6 +3,5 @@ TODO
 
 - validate IP addr
 - validate hostname
-- add helper text on fields (INFO: ex.: mail)
 - javascript confirm button on delete
 - add up to 5 nameservers

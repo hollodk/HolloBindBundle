@@ -1,6 +1,15 @@
   <fieldset>
     <legend>Domain</legend>
-    {{ form_widget(form) }}
+    <div>
+      {{ form_row(form.domain) }}
+      <div>
+        {{ form_label(form.address) }}
+        {{ form_errors(form.address) }}
+        {{ form_widget(form.address) }}
+        <span class="smaller low">Info: The default address for new A-records.</span>
+      </div>
+      {{ form_rest(form) }}
+    </div>
 
     <input type="submit" />
   </fieldset>
