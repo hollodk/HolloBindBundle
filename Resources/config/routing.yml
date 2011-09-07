@@ -1,10 +1,10 @@
-_admin_zone:
-  resource: "@HolloBindBundle/Controller/AdminZoneController.php"
+_admin_domain:
+  resource: "@HolloBindBundle/Controller/AdminDomainController.php"
   type:     annotation
   prefix:   /admin
 
-_zone:
-  resource: "@HolloBindBundle/Controller/ZoneController.php"
+_domain:
+  resource: "@HolloBindBundle/Controller/DomainController.php"
   type:     annotation
 
 _record:

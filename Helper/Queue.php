@@ -23,10 +23,10 @@ class Queue
       switch ($item->getType()) {
       case 'domain.add':
         $this->bind->writeConfig();
-        $this->bind->writeZoneConfig($item->getDomain());
+        $this->bind->writeDomainConfig($item->getDomain());
         break;
       case 'domain.modified':
-        $this->bind->writeZoneConfig($item->getDomain());
+        $this->bind->writeDomainConfig($item->getDomain());
         break;
       case 'domain.delete':
         $this->bind->writeConfig();
@@ -34,7 +34,7 @@ class Queue
       case 'record.add':
       case 'record.modified':
       case 'record.delete':
-        $this->bind->writeZoneConfig($item->getDomain());
+        $this->bind->writeDomainConfig($item->getDomain());
         break;
       }
 

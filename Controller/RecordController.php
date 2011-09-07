@@ -43,7 +43,7 @@ class RecordController extends Controller
           $event = new \Hollo\BindBundle\Event\FilterRecordEvent($record_a);
           $this->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onRecordAdd, $event);
           $this->get('session')->setFlash('notice','Your data has been saved.');
-          return $this->redirect($this->generateUrl('hollo_bind_zone_index', array('id' => $domain->getId())));
+          return $this->redirect($this->generateUrl('hollo_bind_domain_index', array('id' => $domain->getId())));
         }
       }
       if ($this->getRequest()->get($form_cname->getName())) {
@@ -58,7 +58,7 @@ class RecordController extends Controller
           $event = new \Hollo\BindBundle\Event\FilterRecordEvent($record_cname);
           $this->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onRecordAdd, $event);
           $this->get('session')->setFlash('notice','Your data has been saved.');
-          return $this->redirect($this->generateUrl('hollo_bind_zone_index', array('id' => $domain->getId())));
+          return $this->redirect($this->generateUrl('hollo_bind_domain_index', array('id' => $domain->getId())));
         }
       }
       if ($this->getRequest()->get($form_mx->getName())) {
@@ -73,7 +73,7 @@ class RecordController extends Controller
           $event = new \Hollo\BindBundle\Event\FilterRecordEvent($record_mx);
           $this->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onRecordAdd, $event);
           $this->get('session')->setFlash('notice','Your data has been saved.');
-          return $this->redirect($this->generateUrl('hollo_bind_zone_index', array('id' => $domain->getId())));
+          return $this->redirect($this->generateUrl('hollo_bind_domain_index', array('id' => $domain->getId())));
         }
       }
     }
@@ -121,7 +121,7 @@ class RecordController extends Controller
         $this->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onRecordMod, $event);
 
         $this->get('session')->setFlash('notice','Your data has been saved.');
-        return $this->redirect($this->generateUrl('hollo_bind_zone_index', array('id' => $record->getDomain()->getId())));
+        return $this->redirect($this->generateUrl('hollo_bind_domain_index', array('id' => $record->getDomain()->getId())));
       }
     }
 
@@ -146,6 +146,6 @@ class RecordController extends Controller
     $event = new \Hollo\BindBundle\Event\FilterRecordEvent($record);
     $this->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onRecordDel, $event);
 
-    return $this->redirect($this->generateUrl('hollo_bind_zone_index', array('id' => $record->getDomain()->getId())));
+    return $this->redirect($this->generateUrl('hollo_bind_domain_index', array('id' => $record->getDomain()->getId())));
   }
 }

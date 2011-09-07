@@ -21,7 +21,7 @@ class Bind
     $this->bind_init = $bind_init;
   }
 
-  public function reloadZone()
+  public function reloadDomain()
   {
     exec($this->bind_init.' reload');
   }
@@ -47,19 +47,19 @@ EOF;
     }
 
     file_put_contents($this->config_file, $output);
-    $this->reloadZone();
+    $this->reloadDomain();
   }
 
-  public function buildZones()
+  public function buildDomains()
   {
     $domains = $this->em->getRepository('HolloBindBundle:Domain')->findAll();
 
     foreach ($domains as $domain) {
-      $this->writeZoneConfig($domain);
+      $this->writeDomainConfig($domain);
     }
   }
 
-  public function getZoneConfig($domain)
+  public function getDomainConfig($domain)
   {
     $output = $this->templating->render('HolloBindBundle:Bind:zone.conf.txt', array(
       'ns1' => $domain->getNs1(),
@@ -87,16 +87,16 @@ EOF;
     return $output;
   }
 
-  public function writeZoneConfig($domain)
+  public function writeDomainConfig($domain)
   {
     $letter = substr($domain->getDomain(), 0, 1);
 
     if (!file_exists($this->zone_path.'/'.$letter))
       mkdir($this->zone_path.'/'.$letter, 0755);
 
-    $output = $this->getZoneConfig($domain);
+    $output = $this->getDomainConfig($domain);
 
     file_put_contents($this->zone_path.'/'.$letter.'/'.$domain->getDomain(), $output);
-    $this->reloadZone();
+    $this->reloadDomain();
   }
 }

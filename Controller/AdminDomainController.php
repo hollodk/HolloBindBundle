@@ -7,11 +7,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 
-class AdminZoneController extends Controller
+class AdminDomainController extends Controller
 {
   /**
    * @Template()
-   * @Route("/zone")
+   * @Route("/domain")
    */
   public function indexAction()
   {
@@ -25,7 +25,7 @@ class AdminZoneController extends Controller
 
   /**
    * @Template()
-   * @Route("/zone/new")
+   * @Route("/domain/new")
    */
   public function newAction()
   {
@@ -48,7 +48,7 @@ class AdminZoneController extends Controller
 
         $this->get('session')->setFlash('notice','Your data has been saved.');
 
-        return $this->redirect($this->generateUrl('hollo_bind_adminzone_index'));
+        return $this->redirect($this->generateUrl('hollo_bind_admindomain_index'));
       }
     }
 
@@ -59,7 +59,7 @@ class AdminZoneController extends Controller
 
   /**
    * @Template()
-   * @Route("/zone/update/{id}")
+   * @Route("/domain/update/{id}")
    */
   public function updateAction($id)
   {
@@ -80,7 +80,7 @@ class AdminZoneController extends Controller
 
         $this->get('session')->setFlash('notice','Your data has been saved.');
 
-        return $this->redirect($this->generateUrl('hollo_bind_adminzone_index'));
+        return $this->redirect($this->generateUrl('hollo_bind_admindomain_index'));
       }
     }
 
@@ -93,7 +93,7 @@ class AdminZoneController extends Controller
 
   /**
    * @Template()
-   * @Route("/zone/delete/{id}")
+   * @Route("/domain/delete/{id}")
    */
   public function deleteAction($id)
   {
@@ -107,12 +107,12 @@ class AdminZoneController extends Controller
     $this->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onDomainDel, $event);
 
     $this->get('session')->setFlash('notice','Domain has been deleted.');
-    return $this->redirect($this->generateUrl('hollo_bind_adminzone_index'));
+    return $this->redirect($this->generateUrl('hollo_bind_admindomain_index'));
   }
 
   /**
    * @Template()
-   * @Route("/zone/search")
+   * @Route("/domain/search")
    */
   public function searchAction()
   {

@@ -7,11 +7,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 
-class ZoneController extends Controller
+class DomainController extends Controller
 {
   /**
    * @Template()
-   * @Route("/zone/{id}")
+   * @Route("/domain/{id}")
    */
   public function indexAction($id)
   {
@@ -25,7 +25,7 @@ class ZoneController extends Controller
 
   /**
    * @Template()
-   * @Route("/zone/view/{id}")
+   * @Route("/domain/view/{id}")
    */
   public function viewAction($id)
   {
@@ -33,7 +33,7 @@ class ZoneController extends Controller
     $domain = $em->find('HolloBindBundle:Domain', $id);
 
     $bind = $this->get('hollo_bind.bind');
-    $output = $bind->getZoneConfig($domain);
+    $output = $bind->getDomainConfig($domain);
 
     return array(
       'domain' => $domain,
@@ -43,7 +43,7 @@ class ZoneController extends Controller
 
   /**
    * @Template()
-   * @Route("/zone/update/{id}")
+   * @Route("/domain/update/{id}")
    */
   public function updateAction($id)
   {
