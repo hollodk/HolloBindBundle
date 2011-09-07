@@ -3,6 +3,8 @@
 {% block body %}
 <h1>New record</h1>
 
+{% include "HolloBindBundle:Record:info.html.twig" %}
+
 <form method="post" action="{{ path('hollo_bind_record_new', {'id':domain.id}) }}">
   <fieldset>
     <legend>A Record</legend>
