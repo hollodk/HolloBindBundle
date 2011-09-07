@@ -11,7 +11,22 @@
 <form method="post" action="{{ path('hollo_bind_record_new', {'id':domain.id}) }}">
   <fieldset>
     <legend>A Record</legend>
-    {{ form_widget(form_a) }}
+    <p>
+      <p>
+        {{ form_label(form_a.name) }}<br />
+        {{ form_widget(form_a.name, {'attr':{'class':'input-text', 'size':40}}) }}
+        {{ form_errors(form_a.name) }}
+        <br /><span class="smaller low">Info: Ex. mail or www</span>
+      </p>
+      <p>
+        {{ form_label(form_a.address) }}<br />
+        {{ form_widget(form_a.address, {'attr':{'class':'input-text', 'size':40}}) }}
+        {{ form_errors(form_a.address) }}
+        <br /><span class="smaller low">Info: IP address of destination</span>
+      </p>
+
+      {{ form_rest(form_a) }}
+    </p>
 
     <input type="submit" class="input-submit" />
   </fieldset>
@@ -20,7 +35,21 @@
 <form method="post" action="{{ path('hollo_bind_record_new', {'id':domain.id}) }}">
   <fieldset>
     <legend>CNAME Record</legend>
-    {{ form_widget(form_cname) }}
+    <p>
+      <p>
+        {{ form_label(form_cname.name) }}<br />
+        {{ form_widget(form_cname.name, {'attr':{'class':'input-text', 'size':40}}) }}
+        {{ form_errors(form_cname.name) }}
+        <br /><span class="smaller low">Info: Ex. mail or www</span>
+      </p>
+      <p>
+        {{ form_label(form_cname.address) }}<br />
+        {{ form_widget(form_cname.address, {'attr':{'class':'input-text', 'size':40}}) }}
+        {{ form_errors(form_cname.address) }}
+        <br /><span class="smaller low">Info: Destination could be www or a fqdn like www.google.com. <b>Beware the rule of dot.</b></span>
+      </p>
+      {{ form_rest(form_cname) }}
+    </p>
 
     <input type="submit" class="input-submit" />
   </fieldset>
@@ -29,7 +58,22 @@
 <form method="post" action="{{ path('hollo_bind_record_new', {'id':domain.id}) }}">
   <fieldset>
     <legend>MX Record</legend>
-    {{ form_widget(form_mx) }}
+    <p>
+      <p>
+        {{ form_label(form_mx.address) }}<br />
+        {{ form_widget(form_mx.address, {'attr':{'class':'input-text', 'size':40}}) }}
+        {{ form_errors(form_mx.address) }}
+        <br /><span class="smaller low">Info: Destination of mailserver.</span>
+      </p>
+      <p>
+        {{ form_label(form_mx.priority) }}<br />
+        {{ form_widget(form_mx.priority, {'attr':{'class':'input-text', 'size':40}}) }}
+        {{ form_errors(form_mx.priority) }}
+        <br /><span class="smaller low">Info: Lowest number is highest priority.</span>
+      </p>
+
+    {{ form_rest(form_mx) }}
+    </p>
 
     <input type="submit" class="input-submit" />
   </fieldset>
