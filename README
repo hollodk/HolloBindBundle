@@ -1,5 +1,35 @@
+HolloBindBundle
+===============
+:Author:      Michael Holm <hollo@hollo.dk>
+:Date:        2011-09-07
+
+
+Introduction
+------------
+
+This bundle is a bundle to administrate your Linux Bind nameserver installation.
+
+We have made a webinterface to administrate all the zones, those records are persistent in a database.
+
+Then we have some commands which read changes in the database, and they automatically update Bind as it should be.
+
+
+Commands
+--------
+
+Use this bundle in any way you want to, feel free to give me a pull request on github if you make any improvements.
+
+Check out the commands it should be pretty self explaining what they do.
+
+
+Web interface
+-------------
+
+Use our sample base.html.twig file located in Resources/view/base.html.twig, in order to get all the important routing in this bundle.
+
+
 TODO
-====
+----
 
 - validate IP addr
 - validate hostname
