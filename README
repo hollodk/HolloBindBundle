@@ -6,4 +6,3 @@ TODO
 - add helper text on fields (INFO: ex.: mail)
 - javascript confirm button on delete
 - add up to 5 nameservers
-- seems to be a problem adding mx records

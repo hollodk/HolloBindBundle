@@ -65,7 +65,7 @@ class RecordController extends Controller
         $form_mx->bindRequest($this->getRequest());
 
         if ($form_mx->isValid()) {
-          $record_mx->setType('CNAME');
+          $record_mx->setType('MX');
           $record_mx->setDomain($domain);
           $em->persist($record_mx);
           $em->flush();
