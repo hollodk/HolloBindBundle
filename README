@@ -14,6 +14,12 @@ We have made a webinterface to administrate all the zones, those records are per
 Then we have some commands which read changes in the database, and they automatically update Bind as it should be.
 
 
+Dependency
+----------
+
+Its not really a requirement, but we are using HolloMenuBundle for the menu.
+
+
 Getting started
 ---------------
 
