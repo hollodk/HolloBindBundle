@@ -9,6 +9,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Type</th>
       <th>Address</th>
       <th>Updated at</th>
       <th>Action</th>
@@ -18,6 +19,7 @@
     {% for record in domain.records %}
     <tr>
       <td>{{ record.name }}</td>
+      <td>{{ record.type }}</td>
       <td>{{ record.address }}</td>
       <td>{{ domain.updatedAt|date('Y-m-d H:i:s') }}</td>
       <td>
