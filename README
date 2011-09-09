@@ -49,3 +49,4 @@ TODO
 - validate hostname
 - javascript confirm button on delete
 - add up to 5 nameservers
+- multiple servers should be able to process queue
