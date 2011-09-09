@@ -21,6 +21,18 @@ class Bind
     $this->bind_init = $bind_init;
   }
 
+  public function checkEnvironment()
+  {
+    // check zones directory
+    // exists and is writeable
+    //
+    // check named.conf file
+    // exists and is writeable
+    //
+    // check init
+    // exists
+  }
+
   public function writeConfig()
   {
     $output = $this->templating->render('HolloBindBundle:Bind:named.conf.txt', array(
