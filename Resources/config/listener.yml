@@ -9,3 +9,8 @@ services:
       - { name: kernel.event_listener, event: domain.del, method: onDomainDel }
       - { name: kernel.event_listener, event: domain.add, method: onDomainAdd }
       - { name: kernel.event_listener, event: domain.mod, method: onDomainMod }
+  hollo_menu.top_menu_listener:
+    class: Hollo\BindBundle\Listener\TopMenuListener
+    arguments: [@router, @security.context, @translator]
+    tags:
+      - { name: kernel.event_listener, event: top_menu.render, method: onTopMenuRender }

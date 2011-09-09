@@ -1,7 +1,7 @@
-{% extends "HolloBindBundle::base.html.twig" %}
+{% extends "HolloBindBundle::layout.html.twig" %}
 
 {% block body %}
-<h1>New domain</h1>
+<h2>New domain</h2>
 
 <form method="post" action="{{ path('hollo_bind_admindomain_new') }}">
   {% include "HolloBindBundle:AdminDomain:form.html.twig" %}

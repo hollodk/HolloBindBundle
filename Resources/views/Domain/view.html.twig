@@ -1,7 +1,10 @@
-{% extends "HolloBindBundle::base.html.twig" %}
+{% extends "HolloBindBundle::layout.html.twig" %}
 
 {% block body %}
-<h1>{{ domain.domain }}</h1>
+
+{% include "HolloBindBundle:Domain:top.html.twig" %}
+
+<h2>{{ domain.domain }}</h2>
 
 <fieldset>
   <legend>Domain Config</legend>
