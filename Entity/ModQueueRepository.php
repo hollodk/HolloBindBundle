@@ -12,13 +12,4 @@ use Doctrine\ORM\EntityRepository;
  */
 class ModQueueRepository extends EntityRepository
 {
-  public function findQueued()
-  {
-    return $this->_em->createQueryBuilder()
-      ->add('select', 'q')
-      ->add('from', 'HolloBindBundle:ModQueue q')
-      ->add('where', 'q.completed=false')
-      ->getQuery()
-      ->getResult();
-  }
 }

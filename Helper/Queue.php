@@ -17,7 +17,7 @@ class Queue
 
   public function processQueue()
   {
-    $queue = $this->em->getRepository('HolloBindBundle:ModQueue')->findQueued();
+    $queue = $this->em->getRepository('HolloBindBundle:HostQueue')->findQueued();
 
     foreach ($queue as $item) {
       switch ($item->getType()) {
@@ -38,8 +38,10 @@ class Queue
         break;
       }
 
-      $item->setCompleted(true);
-      $this->em->persist($item);
+      $host_queue = new \Hollo\BindBundle\Entity\HostQueue();
+      $host_queue->setModQueue($item);
+      $host_queue->setHost(php_uname('n'));
+      $this->em->persist($host_queue);
     }
 
     $this->em->flush();

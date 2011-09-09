@@ -26,11 +26,11 @@ class QueueProcessCommand extends ContainerAwareCommand
       return;
     }
 
-    $lock->createLock('PROCESS');
+    //$lock->createLock('PROCESS');
 
     $queue = $this->getContainer()->get('hollo_bind.queue');
     $queue->processQueue();
 
-    $lock->removeLock('PROCESS');
+    //$lock->removeLock('PROCESS');
   }
 }

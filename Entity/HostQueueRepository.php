@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class HostQueueRepository extends EntityRepository
 {
+  public function findQueued()
+  {
+    return $this->_em->createQueryBuilder()
+      ->add('select', 'mq')
+      ->add('from', 'HolloBindBundle:ModQueue mq')
+      ->leftJoin('mq.host_queue', 'hq')
+      ->where('hq.completed IS NULL')
+      ->getQuery()
+      ->getResult();
+  }
 }

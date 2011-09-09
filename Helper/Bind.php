@@ -21,11 +21,6 @@ class Bind
     $this->bind_init = $bind_init;
   }
 
-  public function reloadDomain()
-  {
-    exec($this->bind_init.' reload');
-  }
-
   public function writeConfig()
   {
     $output = $this->templating->render('HolloBindBundle:Bind:named.conf.txt', array(
@@ -46,7 +41,7 @@ zone "{$domain->getDomain()}" {
 EOF;
     }
 
-    file_put_contents($this->config_file, $output);
+    $this->writeFile($this->config_file, $output);
     $this->reloadDomain();
   }
 
@@ -96,7 +91,17 @@ EOF;
 
     $output = $this->getDomainConfig($domain);
 
-    file_put_contents($this->zone_path.'/'.$letter.'/'.$domain->getDomain(), $output);
+    $this->writeFile($this->zone_path.'/'.$letter.'/'.$domain->getDomain(), $output);
     $this->reloadDomain();
+  }
+
+  private function writeFile($file, $content)
+  {
+    file_put_contents($file, $content);
+  }
+
+  private function reloadDomain()
+  {
+    exec($this->bind_init.' reload');
   }
 }

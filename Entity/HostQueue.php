@@ -32,7 +32,7 @@ class HostQueue
     /**
      * @var boolean $host
      *
-     * @ORM\Column(name="type", type="string")
+     * @ORM\Column(name="host", type="string")
      */
     private $host;
 
@@ -49,18 +49,11 @@ class HostQueue
      */
     private $mod_queue;
 
-    /**
-     * @ORM\PrePersist()
-     */
-    public function prePersist()
-    {
-      $this->setCreatedAt(new \DateTime());
-    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -80,7 +73,7 @@ class HostQueue
     /**
      * Get completed
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getCompleted()
     {
@@ -100,7 +93,7 @@ class HostQueue
     /**
      * Get host
      *
-     * @return string 
+     * @return string
      */
     public function getHost()
     {
@@ -120,7 +113,7 @@ class HostQueue
     /**
      * Get created_at
      *
-     * @return datetime 
+     * @return datetime
      */
     public function getCreatedAt()
     {
@@ -140,10 +133,19 @@ class HostQueue
     /**
      * Get mod_queue
      *
-     * @return Hollo\BindBundle\Entity\ModQueue 
+     * @return Hollo\BindBundle\Entity\ModQueue
      */
     public function getModQueue()
     {
         return $this->mod_queue;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function prePersist()
+    {
+      $this->setCompleted(true);
+      $this->setCreatedAt(new \DateTime());
     }
 }

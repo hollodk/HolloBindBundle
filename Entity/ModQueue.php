@@ -42,6 +42,11 @@ class ModQueue
      */
     private $domain;
 
+    /**
+     * @ORM\OneToMany(targetEntity="HostQueue", mappedBy="mod_queue")
+     */
+    private $host_queue;
+
 
     /**
      * Get id
@@ -114,10 +119,34 @@ class ModQueue
     }
 
     /**
+     * Add host_queue
+     *
+     * @param Hollo\BindBundle\Entity\HostQueue $hostQueue
+     */
+    public function addHostQueue(\Hollo\BindBundle\Entity\HostQueue $hostQueue)
+    {
+        $this->host_queue[] = $hostQueue;
+    }
+
+    /**
+     * Get host_queue
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getHostQueue()
+    {
+        return $this->host_queue;
+    }
+
+    /**
      * @ORM\PrePersist()
      */
     public function prePersist()
     {
       $this->setCreatedAt(new \DateTime());
+    }
+    public function __construct()
+    {
+        $this->host_queue = new \Doctrine\Common\Collections\ArrayCollection();
     }
 }
