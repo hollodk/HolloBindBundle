@@ -23,13 +23,6 @@ class ModQueue
     private $id;
 
     /**
-     * @var boolean $completed
-     *
-     * @ORM\Column(name="completed", type="boolean")
-     */
-    private $completed;
-
-    /**
      * @var boolean $type
      *
      * @ORM\Column(name="type", type="string")
@@ -81,26 +74,6 @@ class ModQueue
     }
 
     /**
-     * Set completed
-     *
-     * @param boolean $completed
-     */
-    public function setCompleted($completed)
-    {
-        $this->completed = $completed;
-    }
-
-    /**
-     * Get completed
-     *
-     * @return boolean
-     */
-    public function getCompleted()
-    {
-        return $this->completed;
-    }
-
-    /**
      * Set domain
      *
      * @param Hollo\BindBundle\Entity\Domain $domain
@@ -145,7 +118,6 @@ class ModQueue
      */
     public function prePersist()
     {
-      $this->setCompleted(false);
       $this->setCreatedAt(new \DateTime());
     }
 }
