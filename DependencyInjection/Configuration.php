@@ -24,8 +24,9 @@ class Configuration implements ConfigurationInterface
           ->children()
             ->scalarNode('ns1')->defaultValue('ns1.example.com')->end()
             ->scalarNode('ns2')->defaultValue('ns2.example.com')->end()
-            ->scalarNode('hostmaster')->defaultValue('ns1.example.com')->end()
-            ->scalarNode('config_file')->defaultValue('/etc/bind/named.conf')->end()
+            ->scalarNode('hostmaster')->defaultValue('hostmaster.example.com')->end()
+            ->scalarNode('config_path')->defaultValue('/etc/bind')->end()
+            ->scalarNode('config_file')->defaultValue('named.conf')->end()
             ->scalarNode('zone_path')->defaultValue('/var/named/zones')->end()
             ->scalarNode('bind_init')->defaultValue('/etc/init.d/bind9')->end()
           ->end();
