@@ -49,3 +49,5 @@ TODO
   - javascript confirm button on delete
   - add up to 5 nameservers
   - add pager to domain list
+  - address of mx record cannot be null
+  - default mx record address has to be mail.domain.com.
