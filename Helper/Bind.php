@@ -8,29 +8,40 @@ class Bind
   private $templating;
   private $hostmaster;
   private $config_file;
+  private $config_path;
   private $zone_path;
   private $bind_init;
 
-  public function __construct($em, $templating, $hostmaster, $config_file, $zone_path, $bind_init)
+  public function __construct($em, $templating, $hostmaster, $config_file, $config_path, $zone_path, $bind_init)
   {
     $this->em = $em;
     $this->templating = $templating;
     $this->hostmaster = $hostmaster;
     $this->config_file = $config_file;
+    $this->config_path = $config_path;
+    $this->config_path = $config_path;
     $this->zone_path = $zone_path;
     $this->bind_init = $bind_init;
   }
 
-  public function checkEnvironment()
+  public function getZonePath()
   {
-    // check zones directory
-    // exists and is writeable
-    //
-    // check named.conf file
-    // exists and is writeable
-    //
-    // check init
-    // exists
+    return $this->zone_path;
+  }
+
+  public function getConfigFile()
+  {
+    return $this->config_file;
+  }
+
+  public function getConfigPath()
+  {
+    return $this->config_path;
+  }
+
+  public function getBindInit()
+  {
+    return $this->bind_init;
   }
 
   public function writeConfig()
