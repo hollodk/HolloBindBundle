@@ -64,7 +64,7 @@ zone "{$domain->getDomain()}" {
 EOF;
     }
 
-    $this->writeFile($this->config_file, $output);
+    $this->writeFile($this->config_path.'/'.$this->config_file, $output);
     $this->reloadDomain();
   }
 
