@@ -63,7 +63,7 @@
         {{ form_label(form_mx.address) }}<br />
         {{ form_widget(form_mx.address, {'attr':{'class':'input-text', 'size':40}}) }}
         {{ form_errors(form_mx.address) }}
-        <br /><span class="smaller low">Info: Destination of mailserver.</span>
+        <br /><span class="smaller low">Info: Destination could be mail or a fqdn like antispam.example.com. <b>Beware the rule of dot.</b></span>
       </p>
       <p>
         {{ form_label(form_mx.priority) }}<br />
