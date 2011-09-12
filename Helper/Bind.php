@@ -91,13 +91,13 @@ EOF;
 
       switch ($record->getType()) {
         case 'A':
-          $output .= $name."\t\t3H\tIN\tA\t".$record->getAddress().PHP_EOL;
+          $output .= $name."\t\tIN\tA\t".$record->getAddress().PHP_EOL;
           break;
         case 'CNAME':
-          $output .= $name."\t\t3H\tIN\tCNAME\t".$record->getAddress().PHP_EOL;
+          $output .= $name."\t\tIN\tCNAME\t".$record->getAddress().PHP_EOL;
           break;
         case 'MX':
-          $output .= $name."\t\t3H\tIN\tMX\t".$record->getPriority()."\t".$record->getAddress().PHP_EOL;
+          $output .= $name."\t\tIN\tMX\t".$record->getPriority()."\t".$record->getAddress().PHP_EOL;
           break;
       }
     }
