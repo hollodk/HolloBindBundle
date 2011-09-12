@@ -24,6 +24,7 @@ class RecordController extends Controller
 
     $record_a->setAddress($domain->getAddress());
     $record_cname->setAddress($domain->getDomain().'.');
+    $record_mx->setAddress('mail');
     $record_mx->setPriority(10);
 
     $form_a = $this->createForm(new \Hollo\BindBundle\Form\RecordA(), $record_a);
