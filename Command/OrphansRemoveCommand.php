@@ -19,6 +19,17 @@ class OrphansRemoveCommand extends ContainerAwareCommand
 
   protected function execute(InputInterface $input, OutputInterface $output)
   {
+    $lock_key = "ORPHANS_".php_uname('n');
+
+    $lock = $this->getContainer()->get('hollo_bind.lock');
+
+    if ($lock->isLock($lock_key)) {
+      $output->writeln('<info>Process is already running.</info>');
+      return;
+    }
+
+    $lock->createLock($lock_key);
+
     $em = $this->getContainer()->get('doctrine.orm.entity_manager');
     $bind = $this->getContainer()->get('hollo_bind.bind');
 
@@ -37,5 +48,7 @@ class OrphansRemoveCommand extends ContainerAwareCommand
         $output->writeln('<info>'.$zone.' has been removed.</info>');
       }
     }
+
+    $lock->removeLock($lock_key);
   }
 }
