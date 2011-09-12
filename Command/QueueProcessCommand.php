@@ -19,18 +19,20 @@ class QueueProcessCommand extends ContainerAwareCommand
 
   protected function execute(InputInterface $input, OutputInterface $output)
   {
+    $lock_key = "PROCESS_".php_uname('n');
+
     $lock = $this->getContainer()->get('hollo_bind.lock');
 
-    if ($lock->isLock('PROCESS')) {
+    if ($lock->isLock($lock_key)) {
       $output->writeln('<info>Process is already running.</info>');
       return;
     }
 
-    $lock->createLock('PROCESS');
+    $lock->createLock($lock_key);
 
     $queue = $this->getContainer()->get('hollo_bind.queue');
-    $queue->processQueue();
+    $queue->processQueue(php_uname('n'));
 
-    $lock->removeLock('PROCESS');
+    $lock->removeLock($lock_key);
   }
 }
