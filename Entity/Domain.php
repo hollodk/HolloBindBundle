@@ -36,8 +36,7 @@ class Domain
     /**
      * @var string $address
      *
-     * @ORM\Column(name="address", type="string", length=255)
-     * @Assert\NotBlank()
+     * @ORM\Column(name="address", type="string", length=255, nullable="true")
      */
     private $address;
 
