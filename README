@@ -44,8 +44,12 @@ Check out the commands it should be pretty self explaining what they do.
 TODO
 ----
 
-  - validate IP addr
-  - validate hostname
+  - on a record validate hostname
+  - on a record validate ip-addr
+  - on cname validate hostname
+  - on mx validate hostname
+  - on ptr validate hostname
+  - on ptr name has to be numeric between 0 and 255
   - javascript confirm button on delete
   - add up to 5 nameservers
   - add pager to domain list
