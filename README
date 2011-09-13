@@ -61,3 +61,4 @@ TODO
   - when listing, show what bind actually reads
   - domain cannot end on dot
   - add dot after nameservers
+  - make a converter from existing bind records
