@@ -26,8 +26,7 @@ class HolloBindExtension extends Extension
     $loader->load('services.yml');
     $loader->load('listener.yml');
 
-    $container->setParameter('hollo_bind.ns1', $config['ns1']);
-    $container->setParameter('hollo_bind.ns2', $config['ns2']);
+    $container->setParameter('hollo_bind.nameservers', $config['nameservers']);
     $container->setParameter('hollo_bind.hostmaster', $config['hostmaster']);
     $container->setParameter('hollo_bind.config_file', $config['config_file']);
     $container->setParameter('hollo_bind.config_path', $config['config_path']);

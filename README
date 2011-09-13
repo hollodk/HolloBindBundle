@@ -51,7 +51,6 @@ TODO
   - on ptr validate hostname
   - on ptr name has to be numeric between 0 and 255
   - javascript confirm button on delete
-  - add up to 5 nameservers
   - add pager to domain list
   - address of mx record cannot be null
   - support reverse dns
@@ -60,6 +59,5 @@ TODO
   - make top menu with only domains and ptr, and move new to buttons
   - when listing, show what bind actually reads
   - domain cannot end on dot
-  - add dot after nameservers
   - make a converter from existing bind records
   - what about @, is it really needed?

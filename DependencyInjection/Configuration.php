@@ -22,8 +22,13 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
           ->children()
-            ->scalarNode('ns1')->defaultValue('ns1.example.com.')->end()
-            ->scalarNode('ns2')->defaultValue('ns2.example.com.')->end()
+            ->arrayNode('nameservers')
+              ->addDefaultsIfNotSet()
+              ->children()
+                ->scalarNode('ns1')->defaultValue('ns1.example.com.')->end()
+                ->scalarNode('ns2')->defaultValue('ns2.example.com.')->end()
+              ->end()
+            ->end()
             ->scalarNode('hostmaster')->defaultValue('hostmaster.example.com.')->end()
             ->scalarNode('config_path')->defaultValue('/etc/bind')->end()
             ->scalarNode('config_file')->defaultValue('named.conf')->end()
