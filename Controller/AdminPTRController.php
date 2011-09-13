@@ -32,7 +32,7 @@ class AdminPTRController extends Controller
   public function newAction()
   {
     $domain = new \Hollo\BindBundle\Entity\Domain();
-    $domain->setDomain('0.168.192.in-addr.arpa.');
+    $domain->setDomain('0.168.192.in-addr.arpa');
     $domain->setNs1($this->container->getParameter('hollo_bind.ns1'));
     $domain->setNs2($this->container->getParameter('hollo_bind.ns2'));
     $domain->setType('ptr');
