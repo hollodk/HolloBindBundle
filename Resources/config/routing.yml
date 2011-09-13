@@ -3,6 +3,11 @@ _admin_domain:
   type:     annotation
   prefix:   /admin
 
+_admin_ptr:
+  resource: "@HolloBindBundle/Controller/AdminPTRController.php"
+  type:     annotation
+  prefix:   /admin
+
 _domain:
   resource: "@HolloBindBundle/Controller/DomainController.php"
   type:     annotation

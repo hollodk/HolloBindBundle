@@ -29,6 +29,16 @@ class TopMenuListener
       'route' => $this->router->generate('hollo_bind_admindomain_new'),
       'items' => array()
     );
+    $menu['ptr_view'] = array(
+      'name' => $this->translator->trans('View PTR'),
+      'route' => $this->router->generate('hollo_bind_adminptr_index'),
+      'items' => array()
+    );
+    $menu['ptr_new'] = array(
+      'name' => $this->translator->trans('New PTR'),
+      'route' => $this->router->generate('hollo_bind_adminptr_new'),
+      'items' => array()
+    );
 
     $event->setMenu($menu);
   }
