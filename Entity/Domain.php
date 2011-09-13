@@ -65,6 +65,13 @@ class Domain
     private $description;
 
     /**
+     * @var text $type
+     *
+     * @ORM\Column(name="type", type="string", length=255)
+     */
+    private $type;
+
+    /**
      * @var datetime $updated_at
      *
      * @ORM\Column(name="updated_at", type="datetime")
@@ -235,6 +242,46 @@ class Domain
     }
 
     /**
+     * Add records
+     *
+     * @param Hollo\BindBundle\Entity\Record $records
+     */
+    public function addRecord(\Hollo\BindBundle\Entity\Record $records)
+    {
+        $this->records[] = $records;
+    }
+
+    /**
+     * Get records
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getRecords()
+    {
+        return $this->records;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
      * @ORM\PrePersist()
      */
     public function prePersist()
@@ -253,25 +300,5 @@ class Domain
     public function __construct()
     {
         $this->records = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add records
-     *
-     * @param Hollo\BindBundle\Entity\Record $records
-     */
-    public function addRecord(\Hollo\BindBundle\Entity\Record $records)
-    {
-        $this->records[] = $records;
-    }
-
-    /**
-     * Get records
-     *
-     * @return Doctrine\Common\Collections\Collection
-     */
-    public function getRecords()
-    {
-        return $this->records;
     }
 }

@@ -33,6 +33,7 @@ class AdminDomainController extends Controller
     $domain->setNs1($this->container->getParameter('hollo_bind.ns1'));
     $domain->setNs2($this->container->getParameter('hollo_bind.ns2'));
     $domain->setAddress('127.0.0.1');
+    $domain->setType('domain');
 
     $form = $this->createForm(new \Hollo\BindBundle\Form\Domain(), $domain);
 

@@ -33,6 +33,7 @@ class AdminPTRController extends Controller
     $domain->setDomain('0.168.192.in-addr.arpa.');
     $domain->setNs1($this->container->getParameter('hollo_bind.ns1'));
     $domain->setNs2($this->container->getParameter('hollo_bind.ns2'));
+    $domain->setType('ptr');
 
     $form = $this->createForm(new \Hollo\BindBundle\Form\PTR(), $domain);
 
