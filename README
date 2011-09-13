@@ -53,3 +53,4 @@ TODO
   - support reverse dns
   - create converter from existing bind installation
   - add support for TXT records
+  - make top menu with only domains and ptr, and move new to buttons
