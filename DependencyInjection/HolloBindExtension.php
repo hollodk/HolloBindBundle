@@ -28,6 +28,7 @@ class HolloBindExtension extends Extension
 
     $container->setParameter('hollo_bind.nameservers', $config['nameservers']);
     $container->setParameter('hollo_bind.hostmaster', $config['hostmaster']);
+    $container->setParameter('hollo_bind.primary_nameserver', $config['primary_nameserver']);
     $container->setParameter('hollo_bind.config_file', $config['config_file']);
     $container->setParameter('hollo_bind.config_path', $config['config_path']);
     $container->setParameter('hollo_bind.zone_path', $config['zone_path']);

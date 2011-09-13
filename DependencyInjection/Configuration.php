@@ -30,6 +30,7 @@ class Configuration implements ConfigurationInterface
               ->end()
             ->end()
             ->scalarNode('hostmaster')->defaultValue('hostmaster.example.com.')->end()
+            ->scalarNode('primary_nameserver')->defaultValue('ns1.example.com.')->end()
             ->scalarNode('config_path')->defaultValue('/etc/bind')->end()
             ->scalarNode('config_file')->defaultValue('named.conf')->end()
             ->scalarNode('zone_path')->defaultValue('/var/named/zones')->end()

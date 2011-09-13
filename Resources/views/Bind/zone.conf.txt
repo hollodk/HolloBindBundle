@@ -1,5 +1,5 @@
 $TTL 3H
-@		IN	SOA	NS1. {{ hostmaster }}. (
+@		IN	SOA	{{ primary_nameserver }} {{ hostmaster }} (
 			{{ serial }}
 			3H
 			1H

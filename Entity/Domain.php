@@ -241,6 +241,7 @@ class Domain
     {
       $this->setUpdatedAt(new \DateTime());
     }
+
     public function __construct()
     {
         $this->records = new \Doctrine\Common\Collections\ArrayCollection();

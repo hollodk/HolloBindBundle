@@ -7,16 +7,18 @@ class Bind
   private $em;
   private $templating;
   private $hostmaster;
+  private $primary_nameserver;
   private $config_file;
   private $config_path;
   private $zone_path;
   private $bind_init;
 
-  public function __construct($em, $templating, $hostmaster, $config_file, $config_path, $zone_path, $bind_init)
+  public function __construct($em, $templating, $hostmaster, $primary_nameserver, $config_file, $config_path, $zone_path, $bind_init)
   {
     $this->em = $em;
     $this->templating = $templating;
     $this->hostmaster = $hostmaster;
+    $this->primary_nameserver = $primary_nameserver;
     $this->config_file = $config_file;
     $this->config_path = $config_path;
     $this->config_path = $config_path;
@@ -81,6 +83,7 @@ EOF;
   {
     $output = $this->templating->render('HolloBindBundle:Bind:zone.conf.txt', array(
       'hostmaster' => $this->hostmaster,
+      'primary_nameserver' => $this->primary_nameserver,
       'serial' => time()
     ));
 
