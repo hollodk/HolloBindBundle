@@ -52,3 +52,4 @@ TODO
   - address of mx record cannot be null
   - support reverse dns
   - create converter from existing bind installation
+  - add support for TXT records
