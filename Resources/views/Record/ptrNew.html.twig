@@ -16,13 +16,13 @@
         {{ form_label(form.name) }}<br />
         {{ form_widget(form.name, {'attr':{'class':'input-text', 'size':40}}) }}
         {{ form_errors(form.name) }}
-        <br /><span class="smaller low">Info: Ex. mail or www</span>
+        <br /><span class="smaller low">Info: Anything from 1 to 254, has to match to the right IP-addr.</span>
       </p>
       <p>
         {{ form_label(form.address) }}<br />
         {{ form_widget(form.address, {'attr':{'class':'input-text', 'size':40}}) }}
         {{ form_errors(form.address) }}
-        <br /><span class="smaller low">Info: IP address of destination</span>
+        <br /><span class="smaller low">Info: Hostname of destination.</span>
       </p>
 
       {{ form_rest(form) }}
