@@ -11,6 +11,40 @@ class RecordController extends Controller
 {
   /**
    * @Template()
+   * @Route("/record/ptr/new/{id}")
+   */
+  public function ptrNewAction($id)
+  {
+    $em = $this->getDoctrine()->getEntityManager();
+    $domain = $em->find('HolloBindBundle:Domain', $id);
+
+    $record = new \Hollo\BindBundle\Entity\Record();
+    $form = $this->createForm(new \Hollo\BindBundle\Form\RecordPTR(), $record);
+
+    if ($this->getRequest()->getMethod() == 'POST') {
+      $form->bindRequest($this->getRequest());
+
+      if ($form->isValid()) {
+        $record->setType('PTR');
+        $record->setDomain($domain);
+        $em->persist($record);
+        $em->flush();
+
+        $event = new \Hollo\BindBundle\Event\FilterRecordEvent($record);
+        $this->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onRecordAdd, $event);
+        $this->get('session')->setFlash('notice','Your data has been saved.');
+        return $this->redirect($this->generateUrl('hollo_bind_domain_index', array('id' => $domain->getId())));
+      }
+    }
+
+    return array(
+      'domain' => $domain,
+      'form' => $form->createView(),
+    );
+  }
+
+  /**
+   * @Template()
    * @Route("/record/new/{id}")
    */
   public function newAction($id)

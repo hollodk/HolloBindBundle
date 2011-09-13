@@ -1,6 +1,10 @@
 <p class="box">
   <a class="btn-info" href="{{ path('hollo_bind_domain_index', {'id':domain.id}) }}"><span>Domain</span></a>
+  {% if domain.type == 'domain' %}
   <a class="btn-create" href="{{ path('hollo_bind_record_new', {'id':domain.id}) }}"><span>New record</span></a>
+  {% elseif domain.type == 'ptr' %}
+  <a class="btn-create" href="{{ path('hollo_bind_record_ptrnew', {'id':domain.id}) }}"><span>New record</span></a>
+  {% endif %}
   <a class="btn-list" href="{{ path('hollo_bind_domain_view', {'id':domain.id}) }}"><span>View config</span></a>
 </p>
 

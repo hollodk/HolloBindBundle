@@ -1,0 +1,35 @@
+{% extends "HolloBindBundle::layout.html.twig" %}
+
+{% block body %}
+
+{% include "HolloBindBundle:Domain:top.html.twig" %}
+
+<h2>New record</h2>
+
+{% include "HolloBindBundle:Record:info.html.twig" %}
+
+<form method="post" action="{{ path('hollo_bind_record_ptrnew', {'id':domain.id}) }}">
+  <fieldset>
+    <legend>PTR Record</legend>
+    <p>
+      <p>
+        {{ form_label(form.name) }}<br />
+        {{ form_widget(form.name, {'attr':{'class':'input-text', 'size':40}}) }}
+        {{ form_errors(form.name) }}
+        <br /><span class="smaller low">Info: Ex. mail or www</span>
+      </p>
+      <p>
+        {{ form_label(form.address) }}<br />
+        {{ form_widget(form.address, {'attr':{'class':'input-text', 'size':40}}) }}
+        {{ form_errors(form.address) }}
+        <br /><span class="smaller low">Info: IP address of destination</span>
+      </p>
+
+      {{ form_rest(form) }}
+    </p>
+
+    <input type="submit" class="input-submit" />
+  </fieldset>
+</form>
+
+{% endblock %}
