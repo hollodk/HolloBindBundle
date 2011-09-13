@@ -50,7 +50,6 @@ TODO
   - on mx validate hostname
   - on ptr validate hostname
   - on ptr name has to be numeric between 0 and 255
-  - javascript confirm button on delete
   - add pager to domain list
   - address of mx record cannot be null
   - add support for TXT records
