@@ -67,7 +67,7 @@ class AdminPTRController extends Controller
     $em = $this->getDoctrine()->getEntityManager();
 
     $domain = $em->find('HolloBindBundle:Domain', $id);
-    $form = $this->createForm(new \Hollo\BindBundle\Form\Domain(), $domain);
+    $form = $this->createForm(new \Hollo\BindBundle\Form\PTR(), $domain);
 
     if ($this->getRequest()->getMethod() == 'POST') {
       $form->bindRequest($this->getRequest());
@@ -81,7 +81,7 @@ class AdminPTRController extends Controller
 
         $this->get('session')->setFlash('notice','Your data has been saved.');
 
-        return $this->redirect($this->generateUrl('hollo_bind_admindomain_index'));
+        return $this->redirect($this->generateUrl('hollo_bind_adminptr_index'));
       }
     }
 
@@ -108,7 +108,7 @@ class AdminPTRController extends Controller
     $this->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onDomainDel, $event);
 
     $this->get('session')->setFlash('notice','Domain has been deleted.');
-    return $this->redirect($this->generateUrl('hollo_bind_admindomain_index'));
+    return $this->redirect($this->generateUrl('hollo_bind_adminptr_index'));
   }
 
   /**
