@@ -10,8 +10,6 @@ class PTR extends AbstractType
   public function buildForm(FormBuilder $builder, array $options)
   {
     $builder->add('domain');
-    $builder->add('ns1');
-    $builder->add('ns2');
     $builder->add('description');
   }
 

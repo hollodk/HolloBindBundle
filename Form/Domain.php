@@ -11,8 +11,6 @@ class Domain extends AbstractType
   {
     $builder->add('domain');
     $builder->add('address');
-    $builder->add('ns1');
-    $builder->add('ns2');
     $builder->add('description');
   }
 

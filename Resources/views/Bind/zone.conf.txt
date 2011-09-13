@@ -1,12 +1,8 @@
 $TTL 3H
-@		IN	SOA	{{ ns1 }}. {{ hostmaster }}. (
+@		IN	SOA	NS1. {{ hostmaster }}. (
 			{{ serial }}
 			3H
 			1H
 			1W
 			1H )
-
-@		IN	NS	{{ ns1 }}.
-@		IN	NS	{{ ns2 }}.
 ;
-

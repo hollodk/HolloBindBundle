@@ -28,8 +28,6 @@ class DomainAddCommand extends ContainerAwareCommand
     $domain->setDomain($input->getArgument('domain'));
     $domain->setAddress($input->getArgument('address'));
     $domain->setDescription($input->getArgument('description'));
-    $domain->setNs1($this->getContainer()->getParameter('hollo_bind.ns1'));
-    $domain->setNs2($this->getContainer()->getParameter('hollo_bind.ns2'));
 
     $em = $this->getContainer()->get('doctrine.orm.entity_manager');
     $em->persist($domain);

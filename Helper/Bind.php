@@ -80,8 +80,6 @@ EOF;
   public function getDomainConfig($domain)
   {
     $output = $this->templating->render('HolloBindBundle:Bind:zone.conf.txt', array(
-      'ns1' => $domain->getNs1(),
-      'ns2' => $domain->getNs2(),
       'hostmaster' => $this->hostmaster,
       'serial' => time()
     ));
@@ -90,6 +88,9 @@ EOF;
       $name = ($record->getName() != '') ? $record->getName() : '@';
 
       switch ($record->getType()) {
+        case 'NS':
+          $output .= $name."\t\tIN\tNS\t".$record->getAddress().PHP_EOL;
+          break;
         case 'A':
           $output .= $name."\t\tIN\tA\t".$record->getAddress().PHP_EOL;
           break;
@@ -102,7 +103,6 @@ EOF;
         case 'PTR':
           $output .= $name."\t\tIN\tPTR\t".$record->getAddress().PHP_EOL;
           break;
-
       }
     }
 

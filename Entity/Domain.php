@@ -41,22 +41,6 @@ class Domain
     private $address;
 
     /**
-     * @var string $ns1
-     *
-     * @ORM\Column(name="ns1", type="string", length=255)
-     * @Assert\NotBlank()
-     */
-    private $ns1;
-
-    /**
-     * @var string $ns2
-     *
-     * @ORM\Column(name="ns2", type="string", length=255)
-     * @Assert\NotBlank()
-     */
-    private $ns2;
-
-    /**
      * @var text $description
      *
      * @ORM\Column(name="description", type="text")
@@ -139,46 +123,6 @@ class Domain
     public function getAddress()
     {
         return $this->address;
-    }
-
-    /**
-     * Set ns1
-     *
-     * @param string $ns1
-     */
-    public function setNs1($ns1)
-    {
-        $this->ns1 = $ns1;
-    }
-
-    /**
-     * Get ns1
-     *
-     * @return string
-     */
-    public function getNs1()
-    {
-        return $this->ns1;
-    }
-
-    /**
-     * Set ns2
-     *
-     * @param string $ns2
-     */
-    public function setNs2($ns2)
-    {
-        $this->ns2 = $ns2;
-    }
-
-    /**
-     * Get ns2
-     *
-     * @return string
-     */
-    public function getNs2()
-    {
-        return $this->ns2;
     }
 
     /**
