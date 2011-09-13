@@ -50,3 +50,5 @@ TODO
   - add up to 5 nameservers
   - add pager to domain list
   - address of mx record cannot be null
+  - support reverse dns
+  - create converter from existing bind installation
