@@ -30,11 +30,11 @@ class AdminPTRController extends Controller
   public function newAction()
   {
     $domain = new \Hollo\BindBundle\Entity\Domain();
+    $domain->setDomain('0.168.192.in-addr.arpa.');
     $domain->setNs1($this->container->getParameter('hollo_bind.ns1'));
     $domain->setNs2($this->container->getParameter('hollo_bind.ns2'));
-    $domain->setAddress('127.0.0.1');
 
-    $form = $this->createForm(new \Hollo\BindBundle\Form\Domain(), $domain);
+    $form = $this->createForm(new \Hollo\BindBundle\Form\PTR(), $domain);
 
     if ($this->getRequest()->getMethod() == 'POST') {
       $form->bindRequest($this->getRequest());
@@ -49,7 +49,7 @@ class AdminPTRController extends Controller
 
         $this->get('session')->setFlash('notice','Your data has been saved.');
 
-        return $this->redirect($this->generateUrl('hollo_bind_admindomain_index'));
+        return $this->redirect($this->generateUrl('hollo_bind_adminptr_index'));
       }
     }
 

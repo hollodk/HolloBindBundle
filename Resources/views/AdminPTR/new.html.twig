@@ -1,10 +1,10 @@
 {% extends "HolloBindBundle::layout.html.twig" %}
 
 {% block body %}
-<h2>New domain</h2>
+<h2>New PTR</h2>
 
-<form method="post" action="{{ path('hollo_bind_admindomain_new') }}">
-  {% include "HolloBindBundle:AdminDomain:form.html.twig" %}
+<form method="post" action="{{ path('hollo_bind_adminptr_new') }}">
+  {% include "HolloBindBundle:AdminPTR:form.html.twig" %}
 </form>
 
 {% endblock %}

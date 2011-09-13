@@ -1,14 +1,7 @@
   <fieldset>
-    <legend>Domain</legend>
+    <legend>PTR</legend>
       <p>
-      {{ form_row(form.domain) }}
-      <p>
-        {{ form_label(form.address) }}<br />
-        {{ form_widget(form.address, {'attr':{'class':'input-text', 'size':40}}) }}
-        {{ form_errors(form.address) }}
-        <br /><span class="smaller low">Info: The default address for new A-records.</span>
-      </p>
-      {{ form_rest(form) }}
+      {{ form_widget(form) }}
       </p>
 
     <input type="submit" class="input-submit" />
