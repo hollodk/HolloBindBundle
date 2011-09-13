@@ -53,7 +53,6 @@ TODO
   - javascript confirm button on delete
   - add pager to domain list
   - address of mx record cannot be null
-  - create converter from existing bind installation
   - add support for TXT records
   - make top menu with only domains and ptr, and move new to buttons
   - what about @, is it really needed?
