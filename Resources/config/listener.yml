@@ -14,3 +14,9 @@ services:
     arguments: [@router, @security.context, @translator]
     tags:
       - { name: kernel.event_listener, event: top_menu.render, method: onTopMenuRender }
+  hollo_bind.add_record_listener:
+    class: Hollo\BindBundle\Listener\AddRecordListener
+    arguments: [@doctrine.orm.entity_manager, %hollo_bind.ns1%, %hollo_bind.ns2%]
+    tags:
+      - { name: kernel.event_listener, event: domain.add, method: onDomainAdd }
+

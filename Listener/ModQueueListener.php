@@ -8,7 +8,6 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 class ModQueueListener
 {
   private $em;
-  private $bind;
 
   public function __construct($em)
   {

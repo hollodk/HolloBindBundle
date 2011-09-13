@@ -22,9 +22,9 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
           ->children()
-            ->scalarNode('ns1')->defaultValue('ns1.example.com')->end()
-            ->scalarNode('ns2')->defaultValue('ns2.example.com')->end()
-            ->scalarNode('hostmaster')->defaultValue('hostmaster.example.com')->end()
+            ->scalarNode('ns1')->defaultValue('ns1.example.com.')->end()
+            ->scalarNode('ns2')->defaultValue('ns2.example.com.')->end()
+            ->scalarNode('hostmaster')->defaultValue('hostmaster.example.com.')->end()
             ->scalarNode('config_path')->defaultValue('/etc/bind')->end()
             ->scalarNode('config_file')->defaultValue('named.conf')->end()
             ->scalarNode('zone_path')->defaultValue('/var/named/zones')->end()

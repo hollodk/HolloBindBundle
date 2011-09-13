@@ -34,6 +34,9 @@ class DigCommand extends ContainerAwareCommand
       $domain = $this->buildDomain($zone);
       $em->persist($domain);
       $em->flush();
+
+      $event = new \Hollo\BindBundle\Event\FilterDomainEvent($domain);
+      $this->getContainer()->get('event_dispatcher')->dispatch(\Hollo\BindBundle\Event\Events::onDomainAdd, $event);
     }
   }
 
