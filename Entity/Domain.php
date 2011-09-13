@@ -29,6 +29,7 @@ class Domain
      * @var string $domain
      *
      * @ORM\Column(name="domain", type="string", length=255, unique="true")
+     * @Assert\NotBlank()
      */
     private $domain;
 
@@ -36,6 +37,7 @@ class Domain
      * @var string $address
      *
      * @ORM\Column(name="address", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $address;
 
@@ -43,6 +45,7 @@ class Domain
      * @var string $ns1
      *
      * @ORM\Column(name="ns1", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $ns1;
 
@@ -50,6 +53,7 @@ class Domain
      * @var string $ns2
      *
      * @ORM\Column(name="ns2", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $ns2;
 
@@ -57,6 +61,7 @@ class Domain
      * @var text $description
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank()
      */
     private $description;
 
