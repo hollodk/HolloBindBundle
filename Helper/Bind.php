@@ -99,6 +99,10 @@ EOF;
         case 'MX':
           $output .= $name."\t\tIN\tMX\t".$record->getPriority()."\t".$record->getAddress().PHP_EOL;
           break;
+        case 'PTR':
+          $output .= $name."\t\tIN\tPTR\t".$record->getAddress().PHP_EOL;
+          break;
+
       }
     }
 
