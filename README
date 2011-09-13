@@ -55,3 +55,4 @@ TODO
   - add support for TXT records
   - make top menu with only domains and ptr, and move new to buttons
   - when listing, show what bind actually reads
+  - domain cannot end on dot

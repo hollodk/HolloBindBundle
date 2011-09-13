@@ -140,6 +140,10 @@ class RecordController extends Controller
     case 'MX':
       $form = $this->createForm(new \Hollo\BindBundle\Form\RecordMx(), $record);
       break;
+    case 'PTR':
+      $form = $this->createForm(new \Hollo\BindBundle\Form\RecordPTR(), $record);
+      break;
+
     }
 
     if ($this->getRequest()->getMethod() == 'POST') {

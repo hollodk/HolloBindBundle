@@ -237,4 +237,15 @@ class Record
     {
       $this->setUpdatedAt(new \DateTime());
     }
+
+    public function getBindName()
+    {
+      if (preg_match("/\.$/", $this->getName())) {
+        return $this->getName();
+      } elseif ($this->getName() == '') {
+        return $this->getDomain()->getDomain().'.';
+      } else {
+        return $this->getName().'.'.$this->getDomain()->getDomain().'.';
+      }
+    }
 }
