@@ -16,7 +16,9 @@ class AdminDomainController extends Controller
   public function indexAction()
   {
     $em = $this->getDoctrine()->getEntityManager();
-    $domains = $em->getRepository('HolloBindBundle:Domain')->findAll();
+    $domains = $em->getRepository('HolloBindBundle:Domain')->findBy(array(
+      'type' => 'domain'
+    ));
 
     return array(
       'domains' => $domains

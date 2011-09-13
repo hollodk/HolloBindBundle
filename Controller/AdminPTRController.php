@@ -16,7 +16,9 @@ class AdminPTRController extends Controller
   public function indexAction()
   {
     $em = $this->getDoctrine()->getEntityManager();
-    $domains = $em->getRepository('HolloBindBundle:Domain')->findAll();
+    $domains = $em->getRepository('HolloBindBundle:Domain')->findBy(array(
+      'type' => 'ptr'
+    ));
 
     return array(
       'domains' => $domains
