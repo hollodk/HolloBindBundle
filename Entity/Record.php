@@ -248,4 +248,15 @@ class Record
         return $this->getName().'.'.$this->getDomain()->getDomain().'.';
       }
     }
+
+    public function getBindAddress()
+    {
+      if (preg_match("/\.$/", $this->getAddress())) {
+        return $this->getAddress();
+      } elseif ($this->getAddress() == '') {
+        return $this->getDomain()->getDomain().'.';
+      } else {
+        return $this->getAddress().'.'.$this->getDomain()->getDomain().'.';
+      }
+    }
 }

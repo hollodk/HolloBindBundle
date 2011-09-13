@@ -21,7 +21,7 @@
     <tr>
       <td>{{ record.bindName }}</td>
       <td>{{ record.type }}</td>
-      <td>{{ record.address }}</td>
+      <td>{{ record.bindAddress }}</td>
       <td>{{ domain.updatedAt|date('Y-m-d H:i:s') }}</td>
       <td>
         <a href="{{ path('hollo_bind_record_update', {'id':record.id}) }}">Edit</a>
