@@ -1,6 +1,9 @@
 {% extends "HolloBindBundle::layout.html.twig" %}
 
 {% block body %}
+
+{% include "HolloBindBundle:AdminPTR:top.html.twig" %}
+
 <h2>New PTR</h2>
 
 <form method="post" action="{{ path('hollo_bind_adminptr_new') }}">

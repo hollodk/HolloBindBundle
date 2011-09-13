@@ -20,23 +20,13 @@ class TopMenuListener
     $menu = $event->getMenu();
 
     $menu['view'] = array(
-      'name' => $this->translator->trans('View domains'),
+      'name' => $this->translator->trans('Domains'),
       'route' => $this->router->generate('hollo_bind_admindomain_index'),
       'items' => array()
     );
-    $menu['new'] = array(
-      'name' => $this->translator->trans('New domain'),
-      'route' => $this->router->generate('hollo_bind_admindomain_new'),
-      'items' => array()
-    );
     $menu['ptr_view'] = array(
-      'name' => $this->translator->trans('View PTR'),
+      'name' => $this->translator->trans('PTR'),
       'route' => $this->router->generate('hollo_bind_adminptr_index'),
-      'items' => array()
-    );
-    $menu['ptr_new'] = array(
-      'name' => $this->translator->trans('New PTR'),
-      'route' => $this->router->generate('hollo_bind_adminptr_new'),
       'items' => array()
     );
 
