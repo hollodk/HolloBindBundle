@@ -62,3 +62,4 @@ TODO
   - domain cannot end on dot
   - add dot after nameservers
   - make a converter from existing bind records
+  - what about @, is it really needed?
