@@ -54,4 +54,4 @@ TODO
   - add pager to domain list
   - address of mx record cannot be null
   - add support for TXT records
-  - what about @, is it really needed?
+  - not allowed to add hostname to A-record

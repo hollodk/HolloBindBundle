@@ -251,7 +251,9 @@ class Record
 
     public function getBindAddress()
     {
-      if (preg_match("/\.$/", $this->getAddress())) {
+      if (filter_var($this->getAddress(), FILTER_VALIDATE_IP)) {
+        return $this->getAddress();
+      } elseif (preg_match("/\.$/", $this->getAddress())) {
         return $this->getAddress();
       } elseif ($this->getAddress() == '') {
         return $this->getDomain()->getDomain().'.';
