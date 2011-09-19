@@ -45,7 +45,12 @@ class DigCommand extends ContainerAwareCommand
     $domain = new \Hollo\BindBundle\Entity\Domain;
     $domain->setDomain($zone['domain']);
     $domain->setDescription('Migrated');
-    $domain->setType('domain');
+
+    if (preg_match("/arpa$/", $zone['domain'])) {
+      $domain->setType('ptr');
+    } else {
+      $domain->setType('domain');
+    }
 
     return $domain;
   }
