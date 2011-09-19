@@ -5,7 +5,7 @@ namespace Hollo\BindBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class RecordPTR extends AbstractType
+class RecordPtr extends AbstractType
 {
   public function buildForm(FormBuilder $builder, array $options)
   {
