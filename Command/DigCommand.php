@@ -32,7 +32,6 @@ class DigCommand extends ContainerAwareCommand
 
     if (!$domain) {
       $domain = $this->buildDomain($zone);
-      $em->persist($domain);
       $em->flush();
 
       $event = new \Hollo\BindBundle\Event\FilterDomainEvent($domain);
@@ -42,6 +41,8 @@ class DigCommand extends ContainerAwareCommand
 
   private function buildDomain($zone)
   {
+    $em = $this->getContainer()->get('doctrine.orm.entity_manager');
+
     $domain = new \Hollo\BindBundle\Entity\Domain;
     $domain->setDomain($zone['domain']);
     $domain->setDescription('Migrated');
@@ -50,6 +51,37 @@ class DigCommand extends ContainerAwareCommand
       $domain->setType('ptr');
     } else {
       $domain->setType('domain');
+    }
+
+    $em->persist($domain);
+
+    foreach ($zone as $type => $records) {
+      if (is_array($records)) {
+        foreach ($records as $r) {
+          switch ($type) {
+          case 'A':
+          case 'CNAME':
+          case 'PTR':
+            $record = new \Hollo\BindBundle\Entity\Record();
+            $record->setName($r['name']);
+            $record->setAddress($r['destination']);
+            $record->setType($type);
+            $record->setDomain($domain);
+            $em->persist($record);
+
+            break;
+          case 'MX':
+            $record = new \Hollo\BindBundle\Entity\Record();
+            $record->setPriority($r['priority']);
+            $record->setAddress($r['destination']);
+            $record->setType($type);
+            $record->setDomain($domain);
+            $em->persist($record);
+
+            break;
+          }
+        }
+      }
     }
 
     return $domain;

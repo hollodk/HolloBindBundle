@@ -44,6 +44,7 @@ Check out the commands it should be pretty self explaining what they do.
 TODO
 ----
 
+  - validate domain name
   - when adding ip-addr in address field dont add dot in the end
   - on a record validate hostname
   - on a record validate ip-addr
