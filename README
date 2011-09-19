@@ -55,3 +55,4 @@ TODO
   - address of mx record cannot be null
   - add support for TXT records
   - not allowed to add hostname to A-record
+  - sort records on each domain
