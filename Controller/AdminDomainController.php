@@ -18,6 +18,8 @@ class AdminDomainController extends Controller
     $em = $this->getDoctrine()->getEntityManager();
     $domains = $em->getRepository('HolloBindBundle:Domain')->findBy(array(
       'type' => 'domain'
+    ),array(
+      'domain' => 'ASC'
     ));
 
     return array(

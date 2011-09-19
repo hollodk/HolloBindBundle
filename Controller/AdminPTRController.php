@@ -18,6 +18,8 @@ class AdminPTRController extends Controller
     $em = $this->getDoctrine()->getEntityManager();
     $domains = $em->getRepository('HolloBindBundle:Domain')->findBy(array(
       'type' => 'ptr'
+    ), array(
+      'domain' => 'ASC'
     ));
 
     return array(
