@@ -60,7 +60,6 @@ class DigCommand extends ContainerAwareCommand
         foreach ($records as $r) {
           switch ($type) {
           case 'A':
-          case 'CNAME':
           case 'PTR':
             $record = new \Hollo\BindBundle\Entity\Record();
             $record->setName($r['name']);
@@ -70,6 +69,17 @@ class DigCommand extends ContainerAwareCommand
             $em->persist($record);
 
             break;
+          case 'CNAME':
+            $name = preg_replace("/\.".$domain->getDomain()."\.$/","", $r['name']);
+            $record = new \Hollo\BindBundle\Entity\Record();
+            $record->setName($name);
+            $record->setAddress($r['destination']);
+            $record->setType($type);
+            $record->setDomain($domain);
+            $em->persist($record);
+
+            break;
+
           case 'MX':
             $record = new \Hollo\BindBundle\Entity\Record();
             $record->setPriority($r['priority']);
