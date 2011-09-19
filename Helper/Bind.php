@@ -87,23 +87,21 @@ EOF;
       'serial' => time()
     ));
 
-    foreach ($domain->getRecords() as $record) {
+    $rep = $this->em->getRepository('HolloBindBundle:Domain');
 
+    foreach ($rep->getRecords($domain, array('NS')) as $record) {
+      $output .= $record->getName()."\t\tNS\t".$record->getAddress().PHP_EOL;
+    }
+
+    foreach ($rep->getRecords($domain, array('A','CNAME','MX','PTR')) as $record) {
       switch ($record->getType()) {
-        case 'NS':
-          $output .= $record->getName()."\t\tIN\tNS\t".$record->getAddress().PHP_EOL;
-          break;
         case 'A':
-          $output .= $record->getName()."\t\tIN\tA\t".$record->getAddress().PHP_EOL;
-          break;
         case 'CNAME':
-          $output .= $record->getName()."\t\tIN\tCNAME\t".$record->getAddress().PHP_EOL;
+        case 'PTR':
+          $output .= $record->getName()."\t\t".$record->getType()."\t".$record->getAddress().PHP_EOL;
           break;
         case 'MX':
-          $output .= $record->getName()."\t\tIN\tMX\t".$record->getPriority()."\t".$record->getAddress().PHP_EOL;
-          break;
-        case 'PTR':
-          $output .= $record->getName()."\t\tIN\tPTR\t".$record->getAddress().PHP_EOL;
+          $output .= $record->getName()."\t\t".$record->getType()."\t".$record->getPriority()."\t".$record->getAddress().PHP_EOL;
           break;
       }
     }
